@@ -54,7 +54,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.5rem 2rem; /* Etwas kleineres Padding damit das Logo passt */
+            padding: 0.5rem 2rem;
         }
 
         .logo {
@@ -68,7 +68,7 @@
         }
 
         .logo img {
-            height: 60px; /* Logo-Größe */
+            height: 60px;
             width: auto;
         }
 
@@ -105,7 +105,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            /* Hier wird ein Platzhalter-Hintergrundbild geladen. Du kannst dein eigenes Bild 'hero.jpg' nennen und hier einfügen */
+            /* Hier wird ein Platzhalter-Hintergrundbild geladen. */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); 
             background-size: cover;
             background-position: center;
@@ -269,10 +269,47 @@
             margin-bottom: 1rem;
         }
 
+        /* --- ABOUT US SECTION (NEU) --- */
+        .about-section {
+            padding: 5rem 2rem;
+            background-color: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
         /* --- TIMELINE SECTION --- */
         .timeline-section {
             padding: 5rem 2rem;
-            background-color: var(--white);
+            background-color: #f9f9f9;
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
@@ -338,6 +375,21 @@
             .comparison-grid {
                 grid-template-columns: 1fr;
             }
+
+            .about-section {
+                flex-direction: column;
+                padding: 3rem 1.5rem;
+            }
+            
+            .about-image {
+                order: 1; /* Bild nach oben auf Handy */
+                margin-bottom: 2rem;
+            }
+            
+            .about-text {
+                order: 2;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -353,6 +405,7 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#comparativa">Ahorro</a></li>
                 <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <a href="https://wa.me/59892800358" class="cta-button">
@@ -428,6 +481,18 @@
                 <p>Control de malezas en bajos y zonas complicadas. Aplicación quirúrgica.</p>
                 </div>
 
+        </div>
+    </section>
+
+    <section id="nosotros" class="about-section">
+        <div class="about-image">
+            <img src="sobre-mi.jpg" alt="Equipo Kunz Agrotech">
+        </div>
+        <div class="about-text">
+            <h2>Sobre Nosotros</h2>
+            <p><strong>Nuestra Misión:</strong> Ayudar a los agricultores y granjeros a ahorrar agua, agroquímicos y dinero, mientras protegemos el suelo y las plantas.</p>
+            <p>En <strong>Kunz Agrotech</strong>, combinamos la precisión de la tecnología alemana con el conocimiento del campo uruguayo. Utilizamos drones de última generación (DJI T100) para realizar aplicaciones más eficientes, reduciendo el impacto ambiental y maximizando su rentabilidad.</p>
+            <a href="https://wa.me/59892800358" class="cta-button" style="margin-top: 1rem; display: inline-block;">Contáctanos</a>
         </div>
     </section>
 
