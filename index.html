@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunz Agrotech | Servicios de Drones Agrícolas Uruguay</title>
+    <meta name="description" content="Servicios de drones agrícolas en Uruguay. Siembra aérea, fertilización y control de malezas con DJI Agras T100. Calidad Alemana.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-green: #2E7D32; /* Dunkelgrün */
+            --accent-green: #4CAF50; /* Hellgrün */
+            --warning-orange: #FF9800; /* Warnfarbe/Ernte */
+            --dark-text: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 2rem; /* Etwas kleineres Padding damit das Logo passt */
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 60px; /* Logo-Größe */
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .cta-button {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            /* Hier wird ein Platzhalter-Hintergrundbild geladen. Du kannst dein eigenes Bild 'hero.jpg' nennen und hier einfügen */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); 
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 2rem;
+            margin-top: 80px; 
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            background: transparent;
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-green);
+        }
+
+        /* --- COMPARISON SECTION (PROBLEM VS SOLUTION) --- */
+        .comparison {
+            padding: 5rem 2rem;
+            background-color: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-green);
+            font-size: 2.2rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-bad {
+            background-color: #ffebee;
+            border-left: 5px solid #ef5350;
+        }
+
+        .card-good {
+            background-color: #e8f5e9;
+            border-left: 5px solid var(--primary-green);
+        }
+
+        .card h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comparison-list li {
+            list-style: none;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .price-highlight {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .saving-box {
+            grid-column: 1 / -1;
+            background-color: var(--warning-orange);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services {
+            padding: 5rem 2rem;
+            background-color: #f4f4f4;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        /* --- TIMELINE SECTION --- */
+        .timeline-section {
+            padding: 5rem 2rem;
+            background-color: var(--white);
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            color: var(--accent-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-list li {
+            list-style: none;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-list a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .german-badge {
+            display: inline-block;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid #555;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                display: none; 
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="Kunz Agrotech Logo">
+                KUNZ AGROTECH
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#comparativa">Ahorro</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="https://wa.me/59892800358" class="cta-button">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Agricultura de Precisión <br> <span style="color: var(--accent-green);">Tecnología Alemana</span></h1>
+            <p>Soluciones aéreas con DJI Agras T100. Ahorra hasta 39 USD/ha y gana semanas de tiempo.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/59892800358?text=Hola,%20me%20interesa%20un%20presupuesto%20para%20servicio%20de%20drones" class="cta-button">Solicitar Presupuesto</a>
+                <a href="#comparativa" class="btn-outline">Ver Comparativa</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparativa" class="comparison">
+        <h2 class="section-title">¿Por qué perder dinero con métodos tradicionales?</h2>
+        <div class="comparison-grid">
+            <div class="card card-bad">
+                <h3><i class="fas fa-tractor"></i> Mosquito / Tractor</h3>
+                <ul class="comparison-list">
+                    <li><i class="fas fa-times-circle" style="color: #ef5350;"></i> Costo Elevado: <br> <span class="price-highlight" style="color: #ef5350;">55 USD/ha</span></li>
+                    <li><i class="fas fa-times-circle" style="color: #ef5350;"></i> <strong>Pérdidas del 3-5%</strong> por pisado en cultivos altos.</li>
+                    <li><i class="fas fa-times-circle" style="color: #ef5350;"></i> <strong>Limitado:</strong> No entra con falta de piso o barro.</li>
+                </ul>
+            </div>
+
+            <div class="card card-good">
+                <h3><i class="fas fa-plane"></i> Kunz Agrotech (T100)</h3>
+                <ul class="comparison-list">
+                    <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Inversión Inteligente: <br> <span class="price-highlight" style="color: var(--primary-green);">16-18 USD/ha</span></li>
+                    <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> <strong>Cero Daño:</strong> Maquinaria voladora. Sin pisado.</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> <strong>Todo Terreno:</strong> Aplicación aérea incluso con lluvia reciente.</li>
+                </ul>
+            </div>
+
+            <div class="saving-box">
+                <i class="fas fa-coins"></i> ¡AHORRA hasta 39 USD/ha y evita el pisado!
+                <p style="font-size: 1rem; font-weight: 400; margin-top: 10px;">(Spare bis zu 39 USD/ha und vermeide das Niedertrampeln!)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Cero Pisado</h3>
+                <p>Ideal para maíz y soja. Aplicación de fungicidas e insecticidas sin pérdidas del 3-5%.</p>
+                </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                <h3>Siembra al Voleo</h3>
+                <p>Cultivos de cobertura sobre cultivo en pie. Ahorra semanas de tiempo.</p>
+                </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-prescription-bottle"></i></div>
+                <h3>Fertilizantes</h3>
+                <p>Urea y fósforo incluso con falta de piso. Salva tu cosecha cuando el tractor no entra.</p>
+                </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-crosshairs"></i></div>
+                <h3>Zonas Difíciles</h3>
+                <p>Control de malezas en bajos y zonas complicadas. Aplicación quirúrgica.</p>
+                </div>
+
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <h2 class="section-title">El Método Kunz: Ganancia de Tiempo</h2>
+        <p>No espere a la cosecha. Siembre su ganancia antes.</p>
+        
+        <div style="background: #e8f5e9; padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+            <h3><i class="fas fa-clock"></i> Resultado: 20 Días Ganados</h3>
+            <p>Siembra aérea sobre cultivo = Pastoreo anticipado (Más Carne/Leche).</p>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            
+            <div class="footer-column">
+                <h4>Kunz Agrotech</h4>
+                <p>Servicios agrícolas de precisión en Uruguay.</p>
+                <div class="german-badge">
+                    <i class="fas fa-flag"></i> Calidad Alemana (Deutsche Qualität)
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <ul class="contact-list">
+                    <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/59892800358">0928 003 58</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:Stanley@kunzagrotech.com">Stanley@kunzagrotech.com</a></li>
+                    <li><i class="fas fa-user-tie"></i> Trabajamos con Ingenieros Agrónomos</li> 
+                    <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/kunzagrotech">@kunzagrotech</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Zona de Cobertura</h4>
+                <p>Operamos en todo el país, con base en el Departamento de San José.</p>
+            </div>
+
+        </div>
+        <div style="text-align: center; margin-top: 3rem; font-size: 0.9rem; color: #777;">
+            &copy; 2026 Kunz Agrotech. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
