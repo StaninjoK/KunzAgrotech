@@ -73,6 +73,32 @@
     items.forEach(function (el) { el.classList.add("is-in"); });
   }
 
+  /* Video de campo: se descarga recién al tocar "reproducir" (ahorra datos móviles). Sin sonido. */
+  document.querySelectorAll(".field__player").forEach(function (player) {
+    var button = player.querySelector(".field__play");
+    if (!button) return;
+    button.addEventListener("click", function () {
+      var video = document.createElement("video");
+      video.src = player.getAttribute("data-src");
+      video.muted = true;
+      video.playsInline = true;
+      video.setAttribute("playsinline", "");
+      video.loop = true;
+      video.controls = true;
+      video.setAttribute("aria-label", button.getAttribute("aria-label").replace("Reproducir video: ", "Video: "));
+      var picture = player.querySelector("picture");
+      if (picture) video.poster = (picture.querySelector("img").currentSrc || "");
+      player.appendChild(video);
+      player.classList.add("is-playing");
+      player.parentElement.classList.add("is-playing");
+      button.remove();
+      if (picture) picture.remove();
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+      video.focus();
+    });
+  });
+
   /* Formulario de consulta
      Sin servidor: arma el mensaje y lo abre en WhatsApp o en el correo del visitante.
      Con data-endpoint en el <form>, envía los datos como JSON a esa dirección. */

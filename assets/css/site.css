@@ -198,6 +198,27 @@ p { text-wrap: pretty; }
 .control__text p:not(.label) { color: #c5ccd4; max-width: 34em; }
 .note { margin-top: 18px; font-size: 0.84rem; line-height: 1.55; color: var(--on-dark-muted); }
 
+/* ---------- Trabajos en campo ---------- */
+.field { background: var(--ink); color: var(--on-dark); }
+.field__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.9fr); gap: 16px; }
+.field__item, .field__video { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; background: var(--ink-2); }
+.field__item--lead { grid-column: 1 / 3; aspect-ratio: 16 / 9; }
+.field__item--a, .field__item--b { aspect-ratio: 3 / 2; }
+.field__video { grid-column: 3; grid-row: 1 / 3; display: flex; flex-direction: column; }
+.field__item picture, .field__item img { display: block; width: 100%; height: 100%; }
+.field__item img { object-fit: cover; transition: transform 1.2s var(--ease); }
+.field__item:hover img { transform: scale(1.03); }
+.field__item::after, .field__player::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12, 19, 29, 0.72), rgba(12, 19, 29, 0) 34%); pointer-events: none; }
+.field__item figcaption, .field__video figcaption { position: absolute; z-index: 2; left: 18px; right: 18px; bottom: 15px; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: #eef0f2; line-height: 1.45; }
+.field__video figcaption span { display: block; letter-spacing: 0.06em; text-transform: none; color: var(--on-dark-muted); font-size: 0.78rem; margin-top: 2px; }
+.field__player { position: relative; flex: 1; min-height: 0; }
+.field__player picture, .field__player img, .field__player video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; display: block; }
+.field__player.is-playing::after { display: none; }
+.field__play { position: absolute; z-index: 3; left: 50%; top: 26%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.55); background: rgba(12, 19, 29, 0.5); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(4px); transition: transform 0.3s var(--ease), background-color 0.3s; }
+.field__play svg { width: 26px; height: 26px; margin-left: 3px; }
+.field__play:hover { transform: scale(1.06); background: var(--green); border-color: var(--green); }
+.field__video.is-playing figcaption { display: none; }
+
 /* ---------- Aplicaciones ---------- */
 .uses { background: var(--paper); }
 .uses__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
@@ -396,6 +417,11 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
   .split-head, .tech__grid, .uses__grid, .about__grid, .coverage__grid, .agralon__grid, .faq__grid, .contact__grid { grid-template-columns: 1fr; }
   .agralon__grid { gap: 18px; }
   .control { grid-template-columns: 1fr; }
+  .field__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field__item--lead { grid-column: 1 / -1; }
+  .field__video { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 10; }
+  .field__player picture, .field__player img, .field__player video { object-position: 50% 44%; }
+  .field__play { top: 22%; }
   .control__media { min-height: 0; aspect-ratio: 1100 / 499; }
   .split-head { align-items: start; }
   .about__media { max-width: 440px; }
@@ -421,6 +447,9 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
   .specs > div + div { padding-left: 12px; }
   .field-row { grid-template-columns: 1fr; gap: 0; }
   .tech__media img { aspect-ratio: 3 / 2; }
+  .field__grid { gap: 10px; }
+  .field__video { aspect-ratio: 1 / 1; }
+  .field__item--a figcaption, .field__item--b figcaption { left: 12px; right: 10px; bottom: 10px; font-size: 0.64rem; letter-spacing: 0.06em; }
   .about__facts { grid-template-columns: 1fr; }
   .about__facts > div { padding: 16px 0 0; }
   .about__facts > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); margin-top: 16px; }

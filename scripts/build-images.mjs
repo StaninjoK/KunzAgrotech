@@ -47,6 +47,29 @@ async function photo(name, crop) {
   }
 }
 
+// Sektion „Trabajos en campo“: echte Einsatzfotos und Video-Standbilder aus source/campo.
+// `blur` macht Kennzeichen unkenntlich (Koordinaten im Original, vor dem Zuschnitt).
+const FIELD = {
+  "campo-operacion": { file: "operacion-lote.jpg", left: 150, top: 0, width: 3320, height: 1868, widths: [1600, 1000], blur: [{ left: 2030, top: 560, width: 140, height: 50 }] },
+  "campo-base": { file: "base-apoyo.jpg", left: 0, top: 560, width: 1536, height: 1024, widths: [900, 600], blur: [{ left: 855, top: 898, width: 105, height: 44 }] },
+  "campo-t100": { file: "t100-surcos.jpg", left: 0, top: 480, width: 1080, height: 720, widths: [900, 600] },
+  "campo-video-poster": { file: "aplicacion-poster.jpg", left: 0, top: 0, width: 1080, height: 2320, widths: [720, 480] },
+};
+
+async function field(name, c) {
+  let buf = await sharp(src(`campo/${c.file}`)).rotate().toBuffer();
+  for (const b of c.blur || []) {
+    const patch = await sharp(buf).extract(b).blur(14).toBuffer();
+    buf = await sharp(buf).composite([{ input: patch, left: b.left, top: b.top }]).toBuffer();
+  }
+  for (const w of c.widths) {
+    const img = sharp(buf).extract({ left: c.left, top: c.top, width: c.width, height: c.height }).resize({ width: w })
+      .linear(TUNE.contrast, -128 * (TUNE.contrast - 1)).sharpen({ sigma: 0.5, m1: 0.6, m2: 1.2 });
+    await img.clone().webp({ quality: 76, effort: 6 }).toFile(out(`${name}-${w}.webp`));
+    await img.clone().jpeg({ quality: 82, mozjpeg: true }).toFile(out(`${name}-${w}.jpg`));
+  }
+}
+
 // Rundes Logo: das Original hat weißen Grund; der Kreis wird freigestellt, das Siegel selbst bleibt unverändert.
 async function badge() {
   const img = sharp(src("logo-kunz-agrotech.jpg"));
@@ -142,6 +165,7 @@ async function og(round) {
 
 await mkdir(out(""), { recursive: true });
 for (const [name, crop] of Object.entries(CROPS)) await photo(name, crop);
+for (const [name, c] of Object.entries(FIELD)) await field(name, c);
 const round = await badge();
 await brands();
 await og(round);

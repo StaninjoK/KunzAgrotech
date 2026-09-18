@@ -13,6 +13,7 @@ for (const page of pages) {
   const visible = html.replace(/<!--[\s\S]*?-->/g, "");
 
   const refs = [...visible.matchAll(/(?:src|href)="([^"#][^"]*)"/g)].map((m) => m[1]);
+  refs.push(...[...visible.matchAll(/data-src="([^"]+)"/g)].map((m) => m[1]));
   const srcsets = [...visible.matchAll(/(?:srcset|imagesrcset)="([^"]+)"/g)].flatMap((m) => m[1].split(",").map((s) => s.trim().split(/\s+/)[0]));
   for (const ref of new Set([...refs, ...srcsets])) {
     if (/^(https?:|mailto:|tel:|data:)/.test(ref)) continue;
@@ -39,6 +40,25 @@ for (const page of pages) {
     }
   }
 }
+
+// Datenschutz und Gewicht: keine Kamera-Metadaten (EXIF, oft mit GPS) im öffentlichen Repository, keine Riesendateien.
+const { readdir, stat } = await import("node:fs/promises");
+async function walk(dir) {
+  for (const e of await readdir(dir, { withFileTypes: true })) {
+    if (e.name === ".git") continue;
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) { await walk(p); continue; }
+    const rel = path.relative(root, p);
+    const size = (await stat(p)).size;
+    if (size > 8 * 1024 * 1024) problems.push(`zu groß (${(size / 1048576).toFixed(1)} MB) → ${rel}`);
+    if (/^assets[\\/]video[\\/]/.test(rel) && size > 4 * 1024 * 1024) problems.push(`Video über 4 MB → ${rel}`);
+    if (/\.jpe?g$/i.test(e.name)) {
+      const head = (await readFile(p)).subarray(0, 65536);
+      if (head.includes(Buffer.from("Exif\0\0", "latin1"))) problems.push(`EXIF-Metadaten im Bild → ${rel}`);
+    }
+  }
+}
+await walk(root);
 
 if (problems.length) { console.error(problems.join("\n")); process.exit(1); }
 console.log("check ok");
