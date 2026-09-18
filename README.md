@@ -14,7 +14,7 @@ Statische Website (GitHub Pages, Branch `main`, Root, Domain über `CNAME`). Kei
 | `scripts/check.mjs` | Prüft Verweise, Anker, Alt-Texte, JSON-LD und verbotene Inhalte (alte Preise, Gmail-Adresse …) |
 | `logo.jpg`, `sobre-mi.jpg` | Dateien der alten Seite, bleiben für bestehende Links erhalten |
 
-**Neues Foto einsetzen:** Datei als `source/foto-stanley-t100.jpg` speichern, Ausschnitte in `CROPS` (build-images.mjs) anpassen, Skript starten.
+**Fotos:** `source/foto-stanley-t100.jpg` (Stanley mit T100 → Hero, Nosotros, OG-Bild) und `source/t100-drone.jpg` (nur Drohne → Sektion Tecnología). Neues Foto: Datei unter demselben Namen speichern, Ausschnitte in `CROPS` (build-images.mjs) anpassen, Skript starten.
 
 **Alter Stand:** Tag und Branch `backup-before-premium-relaunch-2026-09-18`.
 

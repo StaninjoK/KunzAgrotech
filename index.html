@@ -217,8 +217,8 @@
       <div class="wrap tech__grid">
         <figure class="tech__media reveal">
           <picture>
-            <source type="image/webp" srcset="assets/img/t100-672.webp">
-            <img src="assets/img/t100-672.jpg" width="672" height="440" loading="lazy" decoding="async" alt="Dron agrícola DJI Agras T100 de Kunz Agrotech listo para operar en el campo">
+            <source type="image/webp" srcset="assets/img/t100-800.webp 800w, assets/img/t100-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 620px">
+            <img src="assets/img/t100-800.jpg" srcset="assets/img/t100-800.jpg 800w, assets/img/t100-1200.jpg 1200w" sizes="(max-width: 900px) 92vw, 620px" width="1200" height="707" loading="lazy" decoding="async" alt="Dron agrícola DJI Agras T100 de Kunz Agrotech con los brazos desplegados, listo para operar">
           </picture>
           <figcaption>Nuestro equipo · DJI Agras T100</figcaption>
         </figure>
@@ -311,6 +311,16 @@
           <h2>Tecnología, responsabilidad y trabajo de campo.</h2>
           <p class="lead">Kunz Agrotech es un servicio especializado en soluciones agrícolas con drones, con base en el departamento de San José y operaciones según proyecto en diferentes zonas de Uruguay.</p>
           <p>La empresa fue fundada por Stanley Kunz, quien también participa directamente en la operación de los servicios agrícolas con drones.</p>
+          <dl class="about__facts">
+            <div>
+              <dt>Respaldo técnico</dt>
+              <dd>Trabajamos con ingenieros agrónomos.</dd>
+            </div>
+            <div>
+              <dt>Operación</dt>
+              <dd>Contacto directo con quien realiza el trabajo.</dd>
+            </div>
+          </dl>
           <div class="roots">
             <span class="roots__flag" aria-hidden="true"><i></i><i></i><i></i></span>
             <p>Nuestra forma de trabajar combina tecnología moderna, planificación y un estándar de calidad inspirado en nuestras raíces alemanas, adaptado a las necesidades reales del campo uruguayo.</p>
@@ -364,17 +374,17 @@
     <!-- AGRALON -->
     <section class="agralon" aria-labelledby="agralon-title">
       <div class="wrap agralon__grid reveal">
-        <div>
-          <p class="eyebrow eyebrow--light">Tecnología que también desarrollamos</p>
-          <h2 id="agralon-title">No solo utilizamos tecnología agrícola. También desarrollamos tecnología para el sector.</h2>
+        <div class="agralon__text">
+          <p class="label">Tecnología que también desarrollamos</p>
+          <h2 id="agralon-title">No solo utilizamos tecnología agrícola. También la desarrollamos.</h2>
           <p>Nuestra experiencia no termina en el campo. Dentro del ecosistema de Kunz desarrollamos Agralon, una plataforma tecnológica orientada a la gestión de operaciones y servicios agrícolas.</p>
         </div>
         <a class="agralon__brand" href="https://agralon.com/" target="_blank" rel="noopener" aria-label="Conocer Agralon (se abre en una pestaña nueva)">
           <span class="agralon__logo">
             <img class="agralon__icon" src="assets/img/agralon-icon.png" width="64" height="64" loading="lazy" alt="">
-            <img class="agralon__word" src="assets/img/agralon-wordmark.png" width="400" height="92" loading="lazy" alt="Agralon">
+            <img class="agralon__word" src="assets/img/agralon-wordmark-dark.png" width="400" height="89" loading="lazy" alt="Agralon">
           </span>
-          <span class="link-arrow link-arrow--light">Conocer Agralon <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <span class="agralon__cta">Conocer Agralon <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
       </div>
     </section>
@@ -431,9 +441,13 @@
         <div class="form-card reveal">
           <!-- Sin servidor propio: el formulario arma la consulta y la abre en WhatsApp (o e-mail).
                Si más adelante hay un endpoint real, indicarlo en data-endpoint y site.js lo usa automáticamente. -->
-          <form id="consulta" data-endpoint="" novalidate>
-            <h3>Enviar consulta</h3>
-            <p class="form-hint">Complete los datos y su consulta se abre lista para enviar por WhatsApp.</p>
+          <form id="consulta" data-endpoint="" novalidate aria-describedby="consulta-pasos">
+            <h3>Prepare su consulta</h3>
+            <ol class="form-steps" id="consulta-pasos">
+              <li><span>1</span>Complete los datos del trabajo.</li>
+              <li><span>2</span>Se abre WhatsApp con el mensaje ya escrito.</li>
+              <li><span>3</span>Usted lo revisa y lo envía desde WhatsApp.</li>
+            </ol>
             <div class="field">
               <label for="f-nombre">Nombre</label>
               <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
@@ -469,19 +483,23 @@
             </div>
             <p class="form-error" role="alert" hidden>Por favor, indique su nombre y un teléfono de contacto.</p>
             <div class="form-actions">
-              <button class="btn btn--dark" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar consulta</button>
-              <button class="btn-text" type="button" data-send="mail">Prefiero enviarla por e-mail</button>
+              <button class="btn btn--dark" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Continuar en WhatsApp</button>
+              <button class="btn-text" type="button" data-send="mail">Prefiero usar e-mail</button>
             </div>
+            <p class="form-note">Este formulario no envía datos por sí solo: prepara el mensaje para que usted lo envíe.</p>
           </form>
           <div class="form-done" role="status" aria-live="polite" hidden tabindex="-1">
-            <span class="form-done__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <h3>Su consulta está lista.</h3>
-            <p data-done="wa">Abrimos WhatsApp con el mensaje preparado. Solo falta tocar <strong>Enviar</strong> en la conversación. Le respondemos a la brevedad.</p>
-            <p data-done="mail" hidden>Abrimos su programa de correo con el mensaje preparado. Solo falta enviarlo. Le respondemos a la brevedad.</p>
-            <p data-done="sent" hidden>Recibimos sus datos. Le respondemos a la brevedad.</p>
+            <p class="form-done__step">Paso 3 de 3</p>
+            <h3 data-done-title="wa">Falta enviar el mensaje en WhatsApp.</h3>
+            <h3 data-done-title="mail" hidden>Falta enviar el correo.</h3>
+            <h3 data-done-title="sent" hidden>Recibimos su consulta.</h3>
+            <p data-done="wa">Abrimos WhatsApp con su consulta ya escrita. Revísela y toque <strong>Enviar</strong> en la conversación. Hasta que no la envíe, no nos llega.</p>
+            <p data-done="mail" hidden>Abrimos su programa de correo con la consulta ya escrita. Revísela y envíela desde allí. Hasta que no la envíe, no nos llega.</p>
+            <p data-done="sent" hidden>Le respondemos a la brevedad.</p>
+            <pre class="form-preview" data-preview aria-label="Mensaje preparado"></pre>
             <div class="form-actions">
-              <a class="btn btn--dark" data-retry href="#" target="_blank" rel="noopener">¿No se abrió? Abrir de nuevo</a>
-              <button class="btn-text" type="button" data-edit>Editar la consulta</button>
+              <a class="btn btn--dark" data-retry href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-retry-label>Abrir WhatsApp de nuevo</span></a>
+              <button class="btn-text" type="button" data-edit>Corregir los datos</button>
             </div>
           </div>
         </div>

@@ -116,13 +116,22 @@
     return ok;
   }
 
-  function showDone(kind, url) {
+  function showDone(kind, url, text) {
     done.querySelectorAll("[data-done]").forEach(function (p) {
       p.hidden = p.getAttribute("data-done") !== kind;
     });
+    done.querySelectorAll("[data-done-title]").forEach(function (h) {
+      h.hidden = h.getAttribute("data-done-title") !== kind;
+    });
+    done.querySelector(".form-done__step").hidden = kind === "sent";
+    var preview = done.querySelector("[data-preview]");
+    preview.textContent = text || "";
+    preview.hidden = !text;
     retry.hidden = !url;
     if (url) {
       retry.href = url;
+      retry.querySelector("svg").style.display = kind === "mail" ? "none" : "";
+      retry.querySelector("[data-retry-label]").textContent = kind === "mail" ? "Abrir el correo de nuevo" : "Abrir WhatsApp de nuevo";
       if (kind === "mail") retry.removeAttribute("target");
       else retry.setAttribute("target", "_blank");
     }
@@ -155,7 +164,7 @@
     if (kind === "mail") {
       var mail = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("Consulta por servicio agrícola con dron") + "&body=" + encodeURIComponent(text);
       window.location.href = mail;
-      showDone("mail", mail);
+      showDone("mail", mail, text);
       return;
     }
     openWhatsApp(text);
@@ -164,7 +173,7 @@
   function openWhatsApp(text) {
     var url = "https://wa.me/" + CONTACT.whatsapp + "?text=" + encodeURIComponent(text);
     window.open(url, "_blank", "noopener");
-    showDone("wa", url);
+    showDone("wa", url, text);
   }
 
   form.addEventListener("submit", function (e) {

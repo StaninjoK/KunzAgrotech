@@ -13,17 +13,18 @@ const src = (f) => path.join(root, "source", f);
 const out = (f) => path.join(root, "assets", "img", f);
 
 const PHOTO = src("foto-stanley-t100.jpg");
+const DRONE = src("t100-drone.jpg");
 
-// Ausschnitte im Originalfoto (1200 × 1600)
+// Ausschnitte: foto-stanley-t100.jpg (1200 × 1600), t100-drone.jpg (1600 × 747)
 const CROPS = {
-  hero: { left: 0, top: 150, width: 1200, height: 1450, widths: [1200, 900, 640] },
-  about: { left: 480, top: 400, width: 700, height: 875, widths: [700, 480] },
-  t100: { left: 0, top: 670, width: 672, height: 440, widths: [672] },
+  hero: { file: PHOTO, left: 0, top: 150, width: 1200, height: 1450, widths: [1200, 900, 640] },
+  about: { file: PHOTO, left: 480, top: 400, width: 700, height: 875, widths: [700, 480] },
+  t100: { file: DRONE, left: 190, top: 40, width: 1200, height: 707, widths: [1200, 800] },
 };
 
 async function photo(name, crop) {
   for (const w of crop.widths) {
-    const base = sharp(PHOTO)
+    const base = sharp(crop.file)
       .rotate()
       .extract({ left: crop.left, top: crop.top, width: crop.width, height: crop.height })
       .resize({ width: Math.min(w, crop.width) });
@@ -86,6 +87,13 @@ async function brands() {
     .toBuffer();
   await sharp(rounded).resize(192, 192).png({ compressionLevel: 9 }).toFile(out("agralon-icon.png"));
   await sharp(src("agralon-wordmark-white.png")).resize({ width: 400 }).png({ compressionLevel: 9 }).toFile(out("agralon-wordmark.png"));
+  // Dunkle Fassung für helle Flächen: gleiche Form, Farbe des Schriftzugs aus dem Original-Logo (Agralon_Logo.png ≈ #03190f).
+  const alpha = await sharp(src("agralon-wordmark-white.png")).resize({ width: 400 }).ensureAlpha().extractChannel("alpha").toBuffer();
+  const meta2 = await sharp(alpha).metadata();
+  await sharp({ create: { width: meta2.width, height: meta2.height, channels: 3, background: "#03190f" } })
+    .joinChannel(alpha)
+    .png({ compressionLevel: 9 })
+    .toFile(out("agralon-wordmark-dark.png"));
 }
 
 // Vorschaubild für WhatsApp, Instagram & Co. (1200 × 630)
