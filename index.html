@@ -6,12 +6,20 @@
   <title>Kunz Agrotech | Servicios de Drones Agrícolas en Uruguay</title>
   <meta name="description" content="Servicios agrícolas con DJI Agras T100 para pulverización, siembra, fertilización y aplicaciones en zonas de difícil acceso. Base en San José, Uruguay.">
   <link rel="canonical" href="https://kunzagrotech.com/">
+  <link rel="alternate" hreflang="es-UY" href="https://kunzagrotech.com/">
+  <link rel="alternate" hreflang="en" href="https://kunzagrotech.com/en/">
+  <link rel="alternate" hreflang="de" href="https://kunzagrotech.com/de/">
+  <link rel="alternate" hreflang="pt-BR" href="https://kunzagrotech.com/pt/">
+  <link rel="alternate" hreflang="x-default" href="https://kunzagrotech.com/">
   <meta name="theme-color" content="#0c131d">
   <meta name="format-detection" content="telephone=no">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Kunz Agrotech">
   <meta property="og:locale" content="es_UY">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="pt_BR">
   <meta property="og:url" content="https://kunzagrotech.com/">
   <meta property="og:title" content="Kunz Agrotech | Servicios de Drones Agrícolas en Uruguay">
   <meta property="og:description" content="Pulverización, siembra al voleo, fertilización y trabajos en zonas de difícil acceso con DJI Agras T100. Base en San José, Uruguay.">
@@ -123,6 +131,12 @@
         <a href="#nosotros">Nosotros</a>
         <a href="#cobertura">Cobertura</a>
         <a href="#contacto">Contacto</a>
+        <div class="lang" role="group" aria-label="Idioma">
+          <a href="/" hreflang="es-UY" lang="es" title="Español" data-lang="es" aria-current="page">ES</a>
+          <a href="/en/" hreflang="en" lang="en" title="English" data-lang="en">EN</a>
+          <a href="/de/" hreflang="de" lang="de" title="Deutsch" data-lang="de">DE</a>
+          <a href="/pt/" hreflang="pt-BR" lang="pt-BR" title="Português" data-lang="pt">PT</a>
+        </div>
         <a class="btn btn--primary nav__cta" href="#contacto">Solicitar presupuesto</a>
       </nav>
       <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span></button>
@@ -435,20 +449,43 @@
     </section>
 
     <!-- AGRALON -->
-    <section class="agralon" aria-labelledby="agralon-title">
-      <div class="wrap agralon__grid reveal">
-        <div class="agralon__text">
-          <p class="label">Tecnología que también desarrollamos</p>
-          <h2 id="agralon-title">No solo utilizamos tecnología agrícola. También la desarrollamos.</h2>
-          <p>Nuestra experiencia no termina en el campo. Dentro del ecosistema de Kunz desarrollamos Agralon, una plataforma tecnológica orientada a la gestión de operaciones y servicios agrícolas.</p>
+    <!-- Funciones solo según agralon.com (apps/site/lib/content.ts del repo agralon). La imagen es el motivo oficial con datos de ejemplo. -->
+    <section class="agralon" id="agralon" aria-labelledby="agralon-title">
+      <div class="wrap">
+        <div class="agralon__grid">
+          <div class="agralon__text reveal">
+            <p class="eyebrow eyebrow--light">Tecnología que también desarrollamos</p>
+            <div class="agralon__lockup">
+              <img class="agralon__icon" src="assets/img/agralon-icon.png" width="192" height="192" loading="lazy" alt="">
+              <img class="agralon__word" src="assets/img/agralon-wordmark.png" width="400" height="89" loading="lazy" alt="Agralon">
+            </div>
+            <h2 id="agralon-title">Del campo al software.</h2>
+            <p class="lead lead--light">Trabajamos en el campo y también desarrollamos tecnología para quienes trabajan en él.</p>
+            <p>Agralon es nuestra plataforma para empresas de servicios agrícolas con drones: clientes y campos, trabajos, planificación, flota, equipo, reportes y facturación en un solo sistema. Nace de la experiencia de Kunz Agrotech en el campo.</p>
+            <ul class="agralon__points">
+              <li><h3>Trabajos y planificación</h3><p>Del pedido del cliente al trabajo programado, con piloto y máquina asignados.</p></li>
+              <li><h3>Clientes y campos</h3><p>Cada lote con su contorno, sus hectáreas y el historial de aplicaciones.</p></li>
+              <li><h3>Clima y operación</h3><p>Viento, ráfagas y lluvia por hora, y una app para el piloto que funciona sin señal.</p></li>
+              <li><h3>Flota, reportes y facturas</h3><p>Mantenimiento de drones y baterías, reportes de aplicación, cotizaciones y facturas en PDF.</p></li>
+            </ul>
+            <div class="agralon__cta">
+              <a class="btn btn--light btn--lg" href="https://agralon.com/" target="_blank" rel="noopener">Conocer Agralon <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="link-arrow link-arrow--light" href="https://agralon.com/#features" target="_blank" rel="noopener">Descubrir la plataforma <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+          <figure class="agralon__media reveal">
+            <picture>
+              <source type="image/webp" srcset="assets/img/agralon-plataforma-es-900.webp 900w, assets/img/agralon-plataforma-es-1400.webp 1400w" sizes="(max-width: 900px) 92vw, 640px">
+              <img src="assets/img/agralon-plataforma-es-900.jpg" srcset="assets/img/agralon-plataforma-es-900.jpg 900w, assets/img/agralon-plataforma-es-1400.jpg 1400w" sizes="(max-width: 900px) 92vw, 640px" width="1400" height="932" loading="lazy" decoding="async" alt="Panel de Agralon con trabajos del día, clima por día y la app del piloto en el celular">
+            </picture>
+            <figcaption>Vista de la plataforma Agralon · datos de ejemplo</figcaption>
+          </figure>
         </div>
-        <a class="agralon__brand" href="https://agralon.com/" target="_blank" rel="noopener" aria-label="Conocer Agralon (se abre en una pestaña nueva)">
-          <span class="agralon__logo">
-            <img class="agralon__icon" src="assets/img/agralon-icon.png" width="64" height="64" loading="lazy" alt="">
-            <img class="agralon__word" src="assets/img/agralon-wordmark-dark.png" width="400" height="89" loading="lazy" alt="Agralon">
-          </span>
-          <span class="agralon__cta">Conocer Agralon <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </a>
+        <ul class="ecosystem reveal" aria-label="Ecosistema Kunz">
+          <li><a href="https://kunzglobal.com/" target="_blank" rel="noopener"><strong>Kunz Global</strong><span>Grupo empresarial</span></a></li>
+          <li aria-current="true"><strong>Kunz Agrotech</strong><span>Servicios agrícolas con drones</span></li>
+          <li><a href="https://agralon.com/" target="_blank" rel="noopener"><strong>Agralon</strong><span>Software para operaciones agrícolas</span></a></li>
+        </ul>
       </div>
     </section>
 

@@ -6,18 +6,51 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const problems = [];
-const pages = ["index.html", "404.html"];
+const SITE = "https://kunzagrotech.com/";
+// Sprachseiten: Pfad, erwartetes lang-Attribut, eigene URL
+const LANG_PAGES = [
+  { page: "index.html", lang: "es-UY", url: SITE },
+  { page: "en/index.html", lang: "en", url: `${SITE}en/` },
+  { page: "de/index.html", lang: "de", url: `${SITE}de/` },
+  { page: "pt/index.html", lang: "pt-BR", url: `${SITE}pt/` },
+];
+const HREFLANG = [["es-UY", SITE], ["en", `${SITE}en/`], ["de", `${SITE}de/`], ["pt-BR", `${SITE}pt/`], ["x-default", SITE]];
+const pages = [...LANG_PAGES.map((p) => p.page), "404.html"];
+
+// Typische spanische Wörter, die in einer übersetzten Seite nicht mehr sichtbar sein dürfen.
+const SPANISH = /\b(Solicitar presupuesto|Servicios agrícolas|Nosotros|Cobertura|Preguntas frecuentes|Así trabajamos|Enviar consulta|Prepare su consulta|Continuar en WhatsApp)\b/;
 
 for (const page of pages) {
   const html = await readFile(path.join(root, page), "utf8");
   const visible = html.replace(/<!--[\s\S]*?-->/g, "");
+  const dir = path.dirname(path.join(root, page));
 
   const refs = [...visible.matchAll(/(?:src|href)="([^"#][^"]*)"/g)].map((m) => m[1]);
   refs.push(...[...visible.matchAll(/data-src="([^"]+)"/g)].map((m) => m[1]));
   const srcsets = [...visible.matchAll(/(?:srcset|imagesrcset)="([^"]+)"/g)].flatMap((m) => m[1].split(",").map((s) => s.trim().split(/\s+/)[0]));
   for (const ref of new Set([...refs, ...srcsets])) {
     if (/^(https?:|mailto:|tel:|data:)/.test(ref)) continue;
-    try { await access(path.join(root, ref.replace(/^\//, "").split("?")[0])); } catch { problems.push(`${page}: fehlt → ${ref}`); }
+    const clean = ref.split(/[?#]/)[0];
+    let target = clean.startsWith("/") ? path.join(root, clean) : path.join(dir, clean);
+    if (clean.endsWith("/")) target = path.join(target, "index.html");
+    try { await access(target); } catch { problems.push(`${page}: fehlt → ${ref}`); }
+  }
+
+  const meta = LANG_PAGES.find((p) => p.page === page);
+  if (meta) {
+    if (!html.includes(`<html lang="${meta.lang}">`)) problems.push(`${page}: lang-Attribut ist nicht ${meta.lang}`);
+    if (!html.includes(`<link rel="canonical" href="${meta.url}">`)) problems.push(`${page}: canonical zeigt nicht auf ${meta.url}`);
+    if (!html.includes(`<meta property="og:url" content="${meta.url}">`)) problems.push(`${page}: og:url zeigt nicht auf ${meta.url}`);
+    for (const [hl, url] of HREFLANG) if (!html.includes(`<link rel="alternate" hreflang="${hl}" href="${url}">`)) problems.push(`${page}: hreflang ${hl} fehlt`);
+    if (/noindex/i.test(html)) problems.push(`${page}: noindex gefunden`);
+    if ((html.match(/aria-current="page"/g) || []).length !== 1) problems.push(`${page}: Sprachumschalter markiert nicht genau eine Sprache`);
+    const ogAlt = [...html.matchAll(/og:locale:alternate" content="([^"]+)"/g)].map((m) => m[1]);
+    if (ogAlt.length !== 3 || new Set(ogAlt).size !== 3) problems.push(`${page}: og:locale:alternate nicht genau drei verschiedene (${ogAlt.join(", ")})`);
+    if (meta.page !== "index.html") {
+      const text = visible.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ");
+      const hit = text.match(SPANISH);
+      if (hit) problems.push(`${page}: spanischer Text übrig → ${hit[0]}`);
+    }
   }
 
   const ids = new Set([...visible.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
@@ -32,9 +65,9 @@ for (const page of pages) {
   const banned = [/gmail\.com/i, /USD\s*\/?\s*ha/i, /\b39\s*USD/i, /cero\s+da[ñn]o/i, /20\s+d[ií]as/i, /piloto\s+licenciado/i, /font-?awesome/i, /unsplash/i, /lorem/i];
   for (const re of banned) if (re.test(html)) problems.push(`${page}: unerwünschter Inhalt → ${re}`);
 
-  if (page === "index.html") {
-    for (const must of ["stanley@kunzagrotech.com", "https://wa.me/59892800358", "https://instagram.com/kunzagrotech", "https://kunzglobal.com/", "https://agralon.com/", 'property="og:image"', 'rel="canonical"', "application/ld+json"])
-      if (!html.includes(must)) problems.push(`index.html: fehlt → ${must}`);
+  if (meta) {
+    for (const must of ["stanley@kunzagrotech.com", "https://wa.me/59892800358", "https://instagram.com/kunzagrotech", "https://kunzglobal.com/", "https://agralon.com", 'property="og:image"', 'rel="canonical"', "application/ld+json"])
+      if (!html.includes(must)) problems.push(`${page}: fehlt → ${must}`);
     for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
       try { JSON.parse(m[1]); } catch (e) { problems.push(`JSON-LD ungültig: ${e.message}`); }
     }

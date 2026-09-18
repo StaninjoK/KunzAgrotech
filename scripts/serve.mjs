@@ -10,6 +10,10 @@ const port = Number(process.env.PORT || 8095);
 
 createServer(async (req, res) => {
   let p = decodeURIComponent(new URL(req.url, "http://x").pathname);
+  // Wie GitHub Pages: Ordner ohne Schrägstrich (/en) → 301 auf /en/
+  if (!p.endsWith("/") && !path.extname(p)) {
+    try { await readFile(path.join(root, p, "index.html")); res.writeHead(301, { Location: p + "/" }).end(); return; } catch {}
+  }
   if (p.endsWith("/")) p += "index.html";
   const file = path.join(root, p);
   if (!file.startsWith(root)) { res.writeHead(403).end(); return; }

@@ -70,6 +70,17 @@ async function field(name, c) {
   }
 }
 
+// Agralon-Produktbild: offizielles Dashboard-Motiv von agralon.com (je Sprache, 2x aufgenommen). Enthält Beispieldaten.
+async function agralonMock() {
+  for (const lang of ["es", "en", "de", "pt"]) {
+    for (const w of [1400, 900]) {
+      const img = sharp(src(`agralon/plataforma-${lang}.png`)).resize({ width: w });
+      await img.clone().webp({ quality: 82, effort: 6 }).toFile(out(`agralon-plataforma-${lang}-${w}.webp`));
+      await img.clone().jpeg({ quality: 84, mozjpeg: true }).toFile(out(`agralon-plataforma-${lang}-${w}.jpg`));
+    }
+  }
+}
+
 // Rundes Logo: das Original hat weißen Grund; der Kreis wird freigestellt, das Siegel selbst bleibt unverändert.
 async function badge() {
   const img = sharp(src("logo-kunz-agrotech.jpg"));
@@ -166,6 +177,7 @@ async function og(round) {
 await mkdir(out(""), { recursive: true });
 for (const [name, crop] of Object.entries(CROPS)) await photo(name, crop);
 for (const [name, c] of Object.entries(FIELD)) await field(name, c);
+await agralonMock();
 const round = await badge();
 await brands();
 await og(round);

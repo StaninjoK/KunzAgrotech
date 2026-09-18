@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://kunzagrotech.com/</loc><lastmod>2026-09-18</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kunzagrotech.com/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://kunzagrotech.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kunzagrotech.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://kunzagrotech.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kunzagrotech.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kunzagrotech.com/"/>
+  </url>
+  <url>
+    <loc>https://kunzagrotech.com/en/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://kunzagrotech.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kunzagrotech.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://kunzagrotech.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kunzagrotech.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kunzagrotech.com/"/>
+  </url>
+  <url>
+    <loc>https://kunzagrotech.com/de/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://kunzagrotech.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kunzagrotech.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://kunzagrotech.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kunzagrotech.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kunzagrotech.com/"/>
+  </url>
+  <url>
+    <loc>https://kunzagrotech.com/pt/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://kunzagrotech.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kunzagrotech.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://kunzagrotech.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kunzagrotech.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kunzagrotech.com/"/>
+  </url>
 </urlset>
