@@ -1,5 +1,9 @@
 param([string]$In, [string]$Out, [int]$Width = 720, [int]$Height = 1546, [int]$Bitrate = 2200000, [double]$TrimStart = 0, [double]$TrimStop = 0)
 # Web-Version eines Videos mit der in Windows eingebauten Media Foundation (WinRT MediaTranscoder), ohne Tonspur.
+# Handy-Hochformatvideos sind intern quer gespeichert (Drehung als Metadatum): dann Breite/Höhe VERTAUSCHT angeben,
+# z. B. für 720x1546 hochkant: -Width 1546 -Height 720. Sonst entsteht ein Querformat mit schwarzen Rändern.
+# Beispiel: .\scripts\transcode-video.ps1 -In "<original.mp4>" -Out "<repo>\assets\video\aplicacion-720.mp4" -Width 1546 -Height 720 -Bitrate 1700000
+# Originalvideos NICHT ins Repository legen (Größe); nur die Web-Version in assets/video.
 Add-Type -AssemblyName System.Runtime.WindowsRuntime
 $null = [Windows.Storage.StorageFile, Windows.Storage, ContentType = WindowsRuntime]
 $null = [Windows.Media.Transcoding.MediaTranscoder, Windows.Media, ContentType = WindowsRuntime]
