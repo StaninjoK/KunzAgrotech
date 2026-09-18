@@ -12,24 +12,38 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const src = (f) => path.join(root, "source", f);
 const out = (f) => path.join(root, "assets", "img", f);
 
-const PHOTO = src("foto-stanley-t100.jpg");
-const DRONE = src("t100-drone.jpg");
+const PHOTO = src("foto-stanley-t100.jpg"); // Stanley mit T100 am Boden (Nosotros)
+const FLIGHT = src("foto-stanley-t100-vuelo.jpg"); // Stanley steuert die fliegende T100 (Hero, OG)
+const DRONE = src("t100-drone.jpg"); // nur Drohne (Tecnología)
+const CARD = src("tarjeta-hidrosensible.jpg"); // Wassersensitives Papier nach Applikation
 
-// Ausschnitte: foto-stanley-t100.jpg (1200 × 1600), t100-drone.jpg (1600 × 747)
+// Sanfte Aufbereitung: etwas Kontrast und vorsichtige Schärfe nach dem Verkleinern. Keine Retusche.
+const TUNE = { contrast: 1.04, saturation: 1.02, sharpen: 0.5 };
+
+// Ausschnitte: foto-stanley-t100.jpg und foto-stanley-t100-vuelo.jpg (1200 × 1600), t100-drone.jpg (1600 × 747), tarjeta-hidrosensible.jpg (956 × 2048)
 const CROPS = {
-  hero: { file: PHOTO, left: 0, top: 150, width: 1200, height: 1450, widths: [1200, 900, 640] },
+  hero: { file: FLIGHT, left: 0, top: 0, width: 1200, height: 1600, widths: [1200, 900, 640], tune: TUNE, quality: 80 },
   about: { file: PHOTO, left: 480, top: 400, width: 700, height: 875, widths: [700, 480] },
   t100: { file: DRONE, left: 190, top: 40, width: 1200, height: 707, widths: [1200, 800] },
+  // Karte liegt hochkant im Foto; für das Layout um 90° gedreht (nur Ausrichtung, Inhalt unverändert).
+  card: { file: CARD, left: 150, top: 300, width: 680, height: 1500, rotate: -90, widths: [1100, 700], tune: TUNE },
 };
 
 async function photo(name, crop) {
   for (const w of crop.widths) {
-    const base = sharp(crop.file)
+    let img = sharp(crop.file)
       .rotate()
-      .extract({ left: crop.left, top: crop.top, width: crop.width, height: crop.height })
-      .resize({ width: Math.min(w, crop.width) });
-    await base.clone().webp({ quality: 72, effort: 6 }).toFile(out(`${name}-${w}.webp`));
-    await base.clone().jpeg({ quality: 80, mozjpeg: true }).toFile(out(`${name}-${w}.jpg`));
+      .extract({ left: crop.left, top: crop.top, width: crop.width, height: crop.height });
+    if (crop.rotate) img = sharp(await img.rotate(crop.rotate).toBuffer());
+    const fullWidth = crop.rotate ? crop.height : crop.width;
+    img = img.resize({ width: Math.min(w, fullWidth) });
+    if (crop.tune) {
+      const c = crop.tune.contrast;
+      img = img.linear(c, -128 * (c - 1)).modulate({ saturation: crop.tune.saturation }).sharpen({ sigma: crop.tune.sharpen, m1: 0.6, m2: 1.2 });
+    }
+    const q = crop.quality || 72;
+    await img.clone().webp({ quality: q, effort: 6 }).toFile(out(`${name}-${w}.webp`));
+    await img.clone().jpeg({ quality: q + 8, mozjpeg: true }).toFile(out(`${name}-${w}.jpg`));
   }
 }
 
@@ -99,11 +113,14 @@ async function brands() {
 // Vorschaubild für WhatsApp, Instagram & Co. (1200 × 630)
 async function og(round) {
   const W = 1200, H = 630;
-  const pic = await sharp(PHOTO).extract({ left: 0, top: 430, width: 1200, height: 900 }).resize(560, H, { fit: "cover", position: "right" }).toBuffer();
+  // Ganzes Hochformat (Drohne oben, Stanley unten) auf volle Höhe, rechts angesetzt.
+  const pic = await sharp(FLIGHT).rotate().resize({ height: H }).linear(TUNE.contrast, -128 * (TUNE.contrast - 1)).sharpen({ sigma: 0.5 }).toBuffer();
+  const picW = (await sharp(pic).metadata()).width;
+  const picX = W - picW;
   const logo = await sharp(round).resize(96, 96).toBuffer();
   const text = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#0c131d"/><stop offset="1" stop-color="#0c131d" stop-opacity="0"/></linearGradient></defs>
-    <rect x="640" width="120" height="${H}" fill="url(#g)"/>
+    <rect x="${picX}" width="90" height="${H}" fill="url(#g)"/>
     <g font-family="Segoe UI, Arial, sans-serif" fill="#f4f1ea">
       <text x="186" y="112" font-size="26" font-weight="700" letter-spacing="3">KUNZ AGROTECH</text>
       <text x="186" y="146" font-size="19" fill="#9fb48f" letter-spacing="1">Tecnología agrícola aplicada al campo</text>
@@ -115,7 +132,7 @@ async function og(round) {
     </g></svg>`);
   await sharp({ create: { width: W, height: H, channels: 3, background: "#0c131d" } })
     .composite([
-      { input: pic, left: 640, top: 0 },
+      { input: pic, left: picX, top: 0 },
       { input: text, left: 0, top: 0 },
       { input: logo, left: 72, top: 64 },
     ])
