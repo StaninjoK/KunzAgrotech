@@ -1,544 +1,528 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-UY">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kunz Agrotech | Servicios de Drones Agrícolas Uruguay</title>
-    <meta name="description" content="Servicios de drones agrícolas en Uruguay. Siembra aérea, fertilización y control de malezas con DJI Agras T100. Calidad Alemana.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kunz Agrotech | Servicios de Drones Agrícolas en Uruguay</title>
+  <meta name="description" content="Servicios agrícolas con DJI Agras T100 para pulverización, siembra, fertilización y aplicaciones en zonas de difícil acceso. Base en San José, Uruguay.">
+  <link rel="canonical" href="https://kunzagrotech.com/">
+  <meta name="theme-color" content="#0c131d">
+  <meta name="format-detection" content="telephone=no">
 
-    <style>
-        :root {
-            --primary-green: #2E7D32; /* Dunkelgrün */
-            --accent-green: #4CAF50; /* Hellgrün */
-            --warning-orange: #FF9800; /* Warnfarbe/Ernte */
-            --dark-text: #333;
-            --light-bg: #f9f9f9;
-            --white: #ffffff;
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kunz Agrotech">
+  <meta property="og:locale" content="es_UY">
+  <meta property="og:url" content="https://kunzagrotech.com/">
+  <meta property="og:title" content="Kunz Agrotech | Servicios de Drones Agrícolas en Uruguay">
+  <meta property="og:description" content="Pulverización, siembra al voleo, fertilización y trabajos en zonas de difícil acceso con DJI Agras T100. Base en San José, Uruguay.">
+  <meta property="og:image" content="https://kunzagrotech.com/assets/img/og-kunz-agrotech.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Stanley Kunz junto al dron agrícola DJI Agras T100 de Kunz Agrotech">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="assets/img/logo-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/img/logo-180.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-900.webp" imagesrcset="assets/img/hero-640.webp 640w, assets/img/hero-900.webp 900w, assets/img/hero-1200.webp 1200w" imagesizes="(max-width: 900px) 100vw, 46vw" type="image/webp">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://kunzagrotech.com/#empresa",
+        "name": "Kunz Agrotech",
+        "slogan": "Tecnología agrícola aplicada al campo",
+        "description": "Servicios agrícolas con dron DJI Agras T100: pulverización, siembra al voleo, fertilización y aplicaciones en zonas de difícil acceso.",
+        "url": "https://kunzagrotech.com/",
+        "logo": "https://kunzagrotech.com/assets/img/logo-512.png",
+        "image": "https://kunzagrotech.com/assets/img/og-kunz-agrotech.jpg",
+        "telephone": "+59892800358",
+        "email": "stanley@kunzagrotech.com",
+        "address": { "@type": "PostalAddress", "addressRegion": "San José", "addressCountry": "UY" },
+        "areaServed": { "@type": "Country", "name": "Uruguay" },
+        "founder": { "@type": "Person", "name": "Stanley Kunz", "jobTitle": "Fundador y piloto de drones agrícolas" },
+        "parentOrganization": { "@type": "Organization", "name": "Kunz Global", "url": "https://kunzglobal.com/" },
+        "sameAs": ["https://instagram.com/kunzagrotech"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+59892800358",
+          "email": "stanley@kunzagrotech.com",
+          "availableLanguage": ["es"]
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios agrícolas con drones",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pulverización con dron", "areaServed": "Uruguay" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Siembra al voleo con dron", "areaServed": "Uruguay" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fertilización aérea con dron", "areaServed": "Uruguay" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aplicaciones en zonas de difícil acceso", "areaServed": "Uruguay" } }
+          ]
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-text);
-            background-color: var(--light-bg);
-        }
-
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-
-        /* --- HEADER --- */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.5rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-green);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-text);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-
-        .cta-button {
-            background-color: var(--primary-green);
-            color: var(--white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: #1b5e20;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            /* Hier wird ein Platzhalter-Hintergrundbild geladen. */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); 
-            background-size: cover;
-            background-position: center;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 2rem;
-            margin-top: 80px; 
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-outline {
-            border: 2px solid var(--white);
-            background: transparent;
-            color: var(--white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary-green);
-        }
-
-        /* --- COMPARISON SECTION (PROBLEM VS SOLUTION) --- */
-        .comparison {
-            padding: 5rem 2rem;
-            background-color: var(--white);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-green);
-            font-size: 2.2rem;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .card {
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .card-bad {
-            background-color: #ffebee;
-            border-left: 5px solid #ef5350;
-        }
-
-        .card-good {
-            background-color: #e8f5e9;
-            border-left: 5px solid var(--primary-green);
-        }
-
-        .card h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .comparison-list li {
-            list-style: none;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: start;
-            gap: 10px;
-            font-size: 1.1rem;
-        }
-
-        .price-highlight {
-            font-size: 2.5rem;
-            font-weight: 800;
-            display: block;
-            margin-top: 0.5rem;
-        }
-
-        .saving-box {
-            grid-column: 1 / -1;
-            background-color: var(--warning-orange);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        /* --- SERVICES SECTION --- */
-        .services {
-            padding: 5rem 2rem;
-            background-color: #f4f4f4;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-item {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-
-        /* --- ABOUT US SECTION (NEU) --- */
-        .about-section {
-            padding: 5rem 2rem;
-            background-color: var(--white);
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .about-image {
-            flex: 1;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2.2rem;
-            color: var(--primary-green);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #555;
-        }
-
-        /* --- TIMELINE SECTION --- */
-        .timeline-section {
-            padding: 5rem 2rem;
-            background-color: #f9f9f9;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #222;
-            color: var(--white);
-            padding: 3rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-column h4 {
-            color: var(--accent-green);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-list li {
-            list-style: none;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact-list a {
-            color: #ddd;
-            text-decoration: none;
-        }
-
-        .german-badge {
-            display: inline-block;
-            background: #333;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            border: 1px solid #555;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                display: none; 
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-section {
-                flex-direction: column;
-                padding: 3rem 1.5rem;
-            }
-            
-            .about-image {
-                order: 1; /* Bild nach oben auf Handy */
-                margin-bottom: 2rem;
-            }
-            
-            .about-text {
-                order: 2;
-                text-align: center;
-            }
-        }
-    </style>
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://kunzagrotech.com/#web",
+        "url": "https://kunzagrotech.com/",
+        "name": "Kunz Agrotech",
+        "inLanguage": "es-UY",
+        "publisher": { "@id": "https://kunzagrotech.com/#empresa" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿En qué zonas trabajan?", "acceptedAnswer": { "@type": "Answer", "text": "Nuestra base está en el departamento de San José. Evaluamos trabajos en otros departamentos según la superficie, la ubicación y el tipo de servicio." } },
+          { "@type": "Question", "name": "¿Qué información necesitan para cotizar?", "acceptedAnswer": { "@type": "Answer", "text": "Ubicación del campo, superficie aproximada, cultivo y tipo de aplicación. Con esos datos podemos darle una primera respuesta." } },
+          { "@type": "Question", "name": "¿Trabajan únicamente con pulverización?", "acceptedAnswer": { "@type": "Answer", "text": "No. Kunz Agrotech también ofrece otros servicios compatibles con la plataforma agrícola, incluyendo siembra al voleo y determinadas aplicaciones de fertilizantes." } },
+          { "@type": "Question", "name": "¿Pueden trabajar cuando no entra un tractor?", "acceptedAnswer": { "@type": "Answer", "text": "La aplicación aérea puede ser una alternativa en muchas situaciones con problemas de acceso o condiciones de suelo complicadas. La viabilidad se evalúa para cada trabajo." } },
+          { "@type": "Question", "name": "¿Cómo solicito un presupuesto?", "acceptedAnswer": { "@type": "Answer", "text": "Directamente por WhatsApp al 092 800 358 o mediante el formulario de contacto del sitio." } }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <!--
+    DATOS DE CONTACTO
+    · WhatsApp / teléfono: 092 800 358  → https://wa.me/59892800358
+    · E-mail: stanley@kunzagrotech.com
+    · Instagram: @kunzagrotech
+    Si cambian: buscar y reemplazar en este archivo, en 404.html y en assets/js/site.js (objeto CONTACT).
+  -->
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/></g><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13m-5-5.5 5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="furrows" viewBox="0 0 800 400" preserveAspectRatio="none"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M-20 392C210 330 470 250 830 236"/><path d="M-20 352C200 286 470 214 830 204"/><path d="M-20 310C190 244 470 180 830 174"/><path d="M-20 266C180 204 470 150 830 146"/><path d="M-20 222C170 166 470 122 830 120"/><path d="M-20 178C160 130 470 96 830 96"/><path d="M-20 136C150 98 470 72 830 74"/><path d="M-20 96C140 68 470 50 830 54"/></g></symbol>
+  </svg>
 
-    <header>
-        <div class="navbar">
-            <a href="#" class="logo">
-                <img src="logo.jpg" alt="Kunz Agrotech Logo">
-                KUNZ AGROTECH
-            </a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#comparativa">Ahorro</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <a href="https://wa.me/59892800358" class="cta-button">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-        </div>
-    </header>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Agricultura de Precisión <br> <span style="color: var(--accent-green);">Calidad alemana</span></h1>
-            <p>Soluciones aéreas con DJI Agras T100. Ahorra hasta 39 USD/ha y gana semanas de tiempo.</p>
-            <div class="hero-buttons">
-                <a href="https://wa.me/59892800358?text=Hola,%20me%20interesa%20un%20presupuesto%20para%20servicio%20de%20drones" class="cta-button">Solicitar Presupuesto</a>
-                <a href="#comparativa" class="btn-outline">Ver Comparativa</a>
-            </div>
+  <header class="header" id="top">
+    <div class="header__inner">
+      <a class="brand" href="#top" aria-label="Kunz Agrotech, inicio">
+        <img src="assets/img/logo-96.png" width="46" height="46" alt="">
+        <span class="brand__name">Kunz Agrotech</span>
+      </a>
+      <nav class="nav" id="menu" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#tecnologia">Tecnología</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#cobertura">Cobertura</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn--primary nav__cta" href="#contacto">Solicitar presupuesto</a>
+      </nav>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO -->
+    <section class="hero">
+      <svg class="hero__furrows" aria-hidden="true"><use href="#furrows"/></svg>
+      <div class="hero__text">
+        <p class="eyebrow eyebrow--light">Servicios agrícolas con drones · Uruguay</p>
+        <h1>Precisión desde el aire. <span>Resultados en el campo.</span></h1>
+        <p class="hero__lead">Servicios agrícolas con DJI Agras T100 para pulverización, siembra, fertilización y trabajos en zonas de difícil acceso.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="#contacto">Solicitar presupuesto</a>
+          <a class="btn btn--ghost btn--lg" href="https://wa.me/59892800358?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20agr%C3%ADcola%20con%20dron." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Hablar por WhatsApp</a>
         </div>
+        <ul class="hero__facts">
+          <li><span>Equipo</span>DJI Agras T100</li>
+          <li><span>Base</span>San José</li>
+          <li><span>Servicio</span>En Uruguay</li>
+        </ul>
+      </div>
+      <figure class="hero__media">
+        <picture>
+          <source type="image/webp" srcset="assets/img/hero-640.webp 640w, assets/img/hero-900.webp 900w, assets/img/hero-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 46vw">
+          <img src="assets/img/hero-900.jpg" srcset="assets/img/hero-640.jpg 640w, assets/img/hero-900.jpg 900w, assets/img/hero-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 46vw" width="1200" height="1450" alt="Stanley Kunz, fundador de Kunz Agrotech, junto al dron agrícola DJI Agras T100 en un campo de San José" fetchpriority="high" decoding="async">
+        </picture>
+        <figcaption>Kunz Agrotech · Calidad alemana aplicada al campo uruguayo</figcaption>
+      </figure>
     </section>
 
-    <section id="comparativa" class="comparison">
-        <h2 class="section-title">¿Por qué perder dinero con métodos tradicionales?</h2>
-        <div class="comparison-grid">
-            <div class="card card-bad">
-                <h3><i class="fas fa-tractor"></i> Mosquito / Tractor</h3>
-                <ul class="comparison-list">
-                    <li><i class="fas fa-times-circle" style="color: #ef5350;"></i> Costo Elevado: <br> <span class="price-highlight" style="color: #ef5350;">55 USD/ha</span></li>
-                    <li><i class="fas fa-times-circle" style="color: #ef5350;"></i> <strong>Pérdidas del 3-5%</strong> por pisado en cultivos altos.</li>
-                    <li><i class="fas fa-times-circle" style="color: #ef5350;"></i> <strong>Limitado:</strong> No entra con falta de piso o barro.</li>
-                </ul>
-            </div>
-
-            <div class="card card-good">
-                <h3><i class="fas fa-plane"></i> Kunz Agrotech (T100)</h3>
-                <ul class="comparison-list">
-                    <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Inversión Inteligente: <br> <span class="price-highlight" style="color: var(--primary-green);">16-18 USD/ha</span></li>
-                    <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> <strong>Cero Daño:</strong> Maquinaria voladora. Sin pisado.</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> <strong>Todo Terreno:</strong> Aplicación aérea incluso con lluvia reciente.</li>
-                </ul>
-            </div>
-
-            <div class="saving-box">
-                <i class="fas fa-coins"></i> ¡AHORRA hasta 39 USD/ha y evita el pisado!
-                <p style="font-size: 1rem; font-weight: 400; margin-top: 10px;">(Spare bis zu 39 USD/ha und vermeide das Niedertrampeln!)</p>
-            </div>
+    <!-- VALOR -->
+    <section class="section value" id="ventajas">
+      <div class="wrap">
+        <div class="split-head reveal">
+          <div>
+            <p class="eyebrow">Por qué una aplicación aérea</p>
+            <h2>Cuando el campo exige otra solución.</h2>
+          </div>
+          <p class="lead">La maquinaria pesada no es la mejor respuesta para todas las situaciones. El dron permite aplicar sin circular con ruedas sobre el cultivo y abre posibilidades en lotes de acceso complicado o con el suelo comprometido.</p>
         </div>
+        <ol class="value__grid">
+          <li class="reveal"><span class="num">01</span><h3>Sin pisado del cultivo</h3><p>Aplicación aérea sin circulación de maquinaria sobre el cultivo.</p></li>
+          <li class="reveal"><span class="num">02</span><h3>Acceso a terrenos complicados</h3><p>Una alternativa cuando el estado del suelo dificulta el ingreso de equipos pesados.</p></li>
+          <li class="reveal"><span class="num">03</span><h3>Aplicación eficiente</h3><p>Planificación y ejecución de cada trabajo de acuerdo con el cultivo, el producto y las condiciones del lote.</p></li>
+          <li class="reveal"><span class="num">04</span><h3>Rapidez operativa</h3><p>Tecnología diseñada para cubrir grandes superficies con una operación organizada y eficiente.</p></li>
+        </ol>
+      </div>
     </section>
 
-    <section id="servicios" class="services">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <div class="services-grid">
-            
-            <div class="service-item">
-                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Cero Pisado</h3>
-                <p>Ideal para maíz y soja. Aplicación de fungicidas e insecticidas sin pérdidas del 3-5%.</p>
-                </div>
-
-            <div class="service-item">
-                <div class="service-icon"><i class="fas fa-seedling"></i></div>
-                <h3>Siembra al Voleo</h3>
-                <p>Cultivos de cobertura sobre cultivo en pie. Ahorra semanas de tiempo.</p>
-                </div>
-
-            <div class="service-item">
-                <div class="service-icon"><i class="fas fa-prescription-bottle"></i></div>
-                <h3>Fertilizantes</h3>
-                <p>Urea y fósforo incluso con falta de piso. Salva tu cosecha cuando el tractor no entra.</p>
-                </div>
-
-            <div class="service-item">
-                <div class="service-icon"><i class="fas fa-crosshairs"></i></div>
-                <h3>Zonas Difíciles</h3>
-                <p>Control de malezas en bajos y zonas complicadas. Aplicación quirúrgica.</p>
-                </div>
-
+    <!-- SERVICIOS -->
+    <section class="section services" id="servicios">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Servicios</p>
+          <h2>Servicios agrícolas con drones</h2>
         </div>
+        <div class="services__grid">
+          <article class="svc svc--ink svc--wide reveal">
+            <svg class="svc__art" viewBox="0 0 240 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M20 22h200" stroke-width="2"/><g stroke-width="1.4" stroke-dasharray="1 7"><path d="M50 26 32 104M50 26v78M50 26l18 78"/><path d="M120 26l-18 78M120 26v78M120 26l18 78"/><path d="M190 26l-18 78M190 26v78M190 26l18 78"/></g></g><g fill="currentColor"><circle cx="50" cy="22" r="3.5"/><circle cx="120" cy="22" r="3.5"/><circle cx="190" cy="22" r="3.5"/></g></svg>
+            <span class="num">01</span>
+            <h3>Pulverización</h3>
+            <p>Aplicaciones de productos fitosanitarios mediante tecnología aérea, sin necesidad de circular sobre el cultivo con maquinaria terrestre.</p>
+          </article>
+          <article class="svc svc--paper reveal">
+            <svg class="svc__art" viewBox="0 0 240 120" aria-hidden="true"><g fill="currentColor"><ellipse cx="36" cy="30" rx="5" ry="2.6" transform="rotate(-30 36 30)"/><ellipse cx="78" cy="20" rx="5" ry="2.6" transform="rotate(20 78 20)"/><ellipse cx="120" cy="38" rx="5" ry="2.6" transform="rotate(-60 120 38)"/><ellipse cx="166" cy="24" rx="5" ry="2.6" transform="rotate(40 166 24)"/><ellipse cx="206" cy="42" rx="5" ry="2.6" transform="rotate(-15 206 42)"/><ellipse cx="54" cy="66" rx="5" ry="2.6" transform="rotate(50 54 66)"/><ellipse cx="98" cy="74" rx="5" ry="2.6" transform="rotate(-20 98 74)"/><ellipse cx="146" cy="64" rx="5" ry="2.6" transform="rotate(75 146 64)"/><ellipse cx="188" cy="80" rx="5" ry="2.6" transform="rotate(-45 188 80)"/><ellipse cx="28" cy="100" rx="5" ry="2.6" transform="rotate(15 28 100)"/><ellipse cx="76" cy="106" rx="5" ry="2.6" transform="rotate(-70 76 106)"/><ellipse cx="128" cy="100" rx="5" ry="2.6" transform="rotate(30 128 100)"/><ellipse cx="216" cy="104" rx="5" ry="2.6" transform="rotate(-25 216 104)"/></g></svg>
+            <span class="num">02</span>
+            <h3>Siembra al voleo</h3>
+            <p>Distribución aérea de semillas, incluyendo cultivos de cobertura y otras aplicaciones compatibles con el sistema.</p>
+          </article>
+          <article class="svc svc--paper reveal">
+            <svg class="svc__art" viewBox="0 0 240 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="120" cy="18" r="4"/><circle cx="96" cy="40" r="4"/><circle cx="144" cy="40" r="4"/><circle cx="72" cy="64" r="4"/><circle cx="120" cy="64" r="4"/><circle cx="168" cy="64" r="4"/><circle cx="48" cy="90" r="4"/><circle cx="96" cy="90" r="4"/><circle cx="144" cy="90" r="4"/><circle cx="192" cy="90" r="4"/></g></svg>
+            <span class="num">03</span>
+            <h3>Fertilización</h3>
+            <p>Aplicación aérea de fertilizantes sólidos para situaciones en las que la rapidez o las condiciones del terreno hacen especialmente útil una solución aérea.</p>
+          </article>
+          <article class="svc svc--green svc--wide reveal">
+            <svg class="svc__art" viewBox="0 0 240 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 34c40-22 80 18 120 0s70-14 100 0"/><path d="M10 58c40-22 80 18 120 0s70-14 100 0"/><path d="M60 84c10-6 20 6 30 0s20-6 30 0 20 6 30 0 20-6 30 0"/><path d="M76 102c10-6 20 6 30 0s20-6 30 0 20 6 30 0"/></g></svg>
+            <span class="num">04</span>
+            <h3>Zonas de difícil acceso</h3>
+            <p>Aplicaciones en bajos, sectores con problemas de piso y otras áreas donde el ingreso con maquinaria convencional resulta complicado.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="nosotros" class="about-section">
-        <div class="about-image">
-            <img src="sobre-mi.jpg" alt="Equipo Kunz Agrotech">
+    <!-- TECNOLOGÍA -->
+    <section class="section tech" id="tecnologia">
+      <div class="wrap tech__grid">
+        <figure class="tech__media reveal">
+          <picture>
+            <source type="image/webp" srcset="assets/img/t100-672.webp">
+            <img src="assets/img/t100-672.jpg" width="672" height="440" loading="lazy" decoding="async" alt="Dron agrícola DJI Agras T100 de Kunz Agrotech listo para operar en el campo">
+          </picture>
+          <figcaption>Nuestro equipo · DJI Agras T100</figcaption>
+        </figure>
+        <div class="tech__text reveal">
+          <p class="eyebrow eyebrow--light">Tecnología</p>
+          <h2>Tecnología DJI Agras T100</h2>
+          <p class="lead lead--light">Una plataforma agrícola diseñada para operaciones profesionales.</p>
+          <p>Trabajamos con un equipo de gran porte, pensado para el trabajo agrícola real: pulverización y esparcido de semillas y fertilizantes sólidos, con sistemas de detección del entorno y vuelo planificado sobre el lote.</p>
+          <dl class="specs">
+            <div><dt>Tanque de pulverización</dt><dd>100 <small>L</small></dd></div>
+            <div><dt>Tanque de esparcido</dt><dd>150 <small>L</small></dd></div>
+            <div><dt>Carga máxima</dt><dd>100 <small>kg</small></dd></div>
+          </dl>
+          <p class="note">Radar de ondas milimétricas, LiDAR y sistema de visión para la detección de obstáculos. Datos del fabricante (DJI). La configuración de cada trabajo se define según el cultivo, el producto y las condiciones del lote.</p>
         </div>
-        <div class="about-text">
-            <h2>Sobre Nosotros</h2>
-            <p><strong>Nuestra Misión:</strong> Ayudar a los agricultores y granjeros a ahorrar agua, agroquímicos y dinero, mientras protegemos el suelo y las plantas.</p>
-            <p>En <strong>Kunz Agrotech</strong>, combinamos la precisión de la tecnología alemana con el conocimiento del campo uruguayo. Utilizamos drones de última generación (DJI T100) para realizar aplicaciones más eficientes, reduciendo el impacto ambiental y maximizando su rentabilidad.</p>
-            <a href="https://wa.me/59892800358" class="cta-button" style="margin-top: 1rem; display: inline-block;">Contáctanos</a>
-        </div>
+      </div>
     </section>
 
-    <section class="timeline-section">
-        <h2 class="section-title">El Método Kunz: Ganancia de Tiempo</h2>
-        <p>No espere a la cosecha. Siembre su ganancia antes.</p>
-        
-        <div style="background: #e8f5e9; padding: 2rem; border-radius: 15px; margin-top: 2rem;">
-            <h3><i class="fas fa-clock"></i> Resultado: 20 Días Ganados</h3>
-            <p>Siembra aérea sobre cultivo = Pastoreo anticipado (Más Carne/Leche).</p>
+    <!-- APLICACIONES -->
+    <section class="section uses" id="aplicaciones">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Aplicaciones</p>
+          <h2>Una herramienta para diferentes momentos del ciclo productivo.</h2>
         </div>
+        <div class="uses__grid">
+          <div class="uses__lists reveal">
+            <div>
+              <h3 class="label">Cultivos y sistemas</h3>
+              <ul class="plain-list">
+                <li>Soja</li>
+                <li>Maíz</li>
+                <li>Pasturas</li>
+                <li>Cultivos de cobertura</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="label">Trabajos</h3>
+              <ul class="plain-list">
+                <li>Tratamientos fitosanitarios</li>
+                <li>Fertilización</li>
+                <li>Lotes con problemas de acceso</li>
+                <li>Aplicaciones donde importa evitar el pisado</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="case reveal">
+            <p class="label">Un caso concreto</p>
+            <h3>Siembra aérea sobre cultivo en pie</h3>
+            <p>La siembra aérea puede permitir adelantar determinadas tareas sin esperar al ingreso de maquinaria terrestre, dependiendo del cultivo, las condiciones del lote y el sistema productivo.</p>
+          </aside>
+        </div>
+        <p class="footnote reveal">No toda aplicación es adecuada para cualquier cultivo o producto. La viabilidad se evalúa en cada caso, antes de coordinar el trabajo.</p>
+      </div>
     </section>
 
-    <footer id="contacto">
-        <div class="footer-content">
-            
-            <div class="footer-column">
-                <h4>Kunz Agrotech</h4>
-                <p>Servicios agrícolas de precisión en Uruguay.</p>
-                <div class="german-badge">
-                    <i class="fas fa-flag"></i> Calidad Alemana (Deutsche Qualität)
-                </div>
-            </div>
-
-            <div class="footer-column">
-                <h4>Contacto</h4>
-                <ul class="contact-list">
-                    <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/59892800358">092 800 358</a></li>
-                    <li><i class="fas fa-envelope"></i> <a href="mailto:Stankunz14@gmail.com">Stankunz14@gmail.com</a></li>
-                    <li><i class="fas fa-user-tie"></i> Trabajamos con Ingenieros Agrónomos</li> 
-                    <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/kunzagrotech">@kunzagrotech</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4>Zona de Cobertura</h4>
-                <p>Operamos en todo el país, con base en el Departamento de San José.</p>
-            </div>
-
+    <!-- PROCESO -->
+    <section class="section process" id="proceso">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Así trabajamos</p>
+          <h2>Un proceso claro, de la consulta a la aplicación.</h2>
         </div>
-        <div style="text-align: center; margin-top: 3rem; font-size: 0.9rem; color: #777;">
-            &copy; 2026 Kunz Agrotech. Todos los derechos reservados.
-        </div>
-    </footer>
+        <ol class="steps">
+          <li class="reveal"><span class="num">01</span><h3>Nos cuenta qué necesita</h3><p>Cultivo, superficie, ubicación y tipo de trabajo.</p></li>
+          <li class="reveal"><span class="num">02</span><h3>Evaluamos el servicio</h3><p>Analizamos las características básicas del trabajo y coordinamos las condiciones.</p></li>
+          <li class="reveal"><span class="num">03</span><h3>Coordinamos la aplicación</h3><p>Definimos fecha y operación según condiciones adecuadas para el trabajo.</p></li>
+          <li class="reveal"><span class="num">04</span><h3>Ejecutamos el servicio</h3><p>Realizamos la operación con el equipo y la planificación correspondientes.</p></li>
+        </ol>
+        <p class="process__cta reveal"><a class="link-arrow" href="https://wa.me/59892800358?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20agr%C3%ADcola%20con%20dron." target="_blank" rel="noopener">Consultar un trabajo <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </section>
 
+    <!-- NOSOTROS -->
+    <section class="section about" id="nosotros">
+      <div class="wrap about__grid">
+        <figure class="about__media reveal">
+          <picture>
+            <source type="image/webp" srcset="assets/img/about-480.webp 480w, assets/img/about-700.webp 700w" sizes="(max-width: 900px) 92vw, 440px">
+            <img src="assets/img/about-700.jpg" srcset="assets/img/about-480.jpg 480w, assets/img/about-700.jpg 700w" sizes="(max-width: 900px) 92vw, 440px" width="700" height="875" loading="lazy" decoding="async" alt="Stanley Kunz con el control remoto del DJI Agras T100">
+          </picture>
+          <figcaption>
+            <strong>Stanley Kunz</strong>
+            <span>Fundador · Kunz Agrotech</span>
+            <span>Piloto de Drones Agrícolas</span>
+          </figcaption>
+        </figure>
+        <div class="about__text reveal">
+          <p class="eyebrow">Nosotros</p>
+          <h2>Tecnología, responsabilidad y trabajo de campo.</h2>
+          <p class="lead">Kunz Agrotech es un servicio especializado en soluciones agrícolas con drones, con base en el departamento de San José y operaciones según proyecto en diferentes zonas de Uruguay.</p>
+          <p>La empresa fue fundada por Stanley Kunz, quien también participa directamente en la operación de los servicios agrícolas con drones.</p>
+          <div class="roots">
+            <span class="roots__flag" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p>Nuestra forma de trabajar combina tecnología moderna, planificación y un estándar de calidad inspirado en nuestras raíces alemanas, adaptado a las necesidades reales del campo uruguayo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      REFERENCIAS / TRABAJOS REALIZADOS — sección preparada, todavía sin publicar.
+      Cuando existan fotos, informes o testimonios reales, quitar este comentario y completar las tarjetas.
+      Nunca publicar testimonios, nombres o cifras que no sean reales y verificables.
+
+    <section class="section refs" id="trabajos">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Trabajos realizados</p><h2>Del campo, sin adornos.</h2></div>
+        <div class="refs__grid">
+          <article class="ref">
+            <img src="assets/img/trabajo-01.jpg" width="800" height="600" loading="lazy" alt="">
+            <p class="label">Siembra al voleo · Departamento</p>
+            <h3>Título del trabajo</h3>
+            <p>Descripción breve y real del trabajo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- COBERTURA + PRESUPUESTO -->
+    <section class="section coverage" id="cobertura">
+      <div class="wrap coverage__grid">
+        <div class="reveal">
+          <p class="eyebrow">Cobertura</p>
+          <h2>Base en San José. Operaciones en Uruguay.</h2>
+          <p class="lead">Nuestra base operativa se encuentra en el departamento de San José. Evaluamos trabajos en otras zonas del país según superficie, ubicación y tipo de servicio.</p>
+        </div>
+        <div class="quote-card reveal" id="presupuesto">
+          <p class="label">Presupuestos</p>
+          <h3>Presupuestos según superficie, ubicación y características del trabajo.</h3>
+          <p>Cada trabajo es distinto. Para cotizar necesitamos pocos datos:</p>
+          <ul class="check-list">
+            <li>Ubicación del campo</li>
+            <li>Superficie aproximada</li>
+            <li>Cultivo y tipo de aplicación</li>
+          </ul>
+          <a class="btn btn--primary" href="#contacto">Solicitar presupuesto</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGRALON -->
+    <section class="agralon" aria-labelledby="agralon-title">
+      <div class="wrap agralon__grid reveal">
+        <div>
+          <p class="eyebrow eyebrow--light">Tecnología que también desarrollamos</p>
+          <h2 id="agralon-title">No solo utilizamos tecnología agrícola. También desarrollamos tecnología para el sector.</h2>
+          <p>Nuestra experiencia no termina en el campo. Dentro del ecosistema de Kunz desarrollamos Agralon, una plataforma tecnológica orientada a la gestión de operaciones y servicios agrícolas.</p>
+        </div>
+        <a class="agralon__brand" href="https://agralon.com/" target="_blank" rel="noopener" aria-label="Conocer Agralon (se abre en una pestaña nueva)">
+          <span class="agralon__logo">
+            <img class="agralon__icon" src="assets/img/agralon-icon.png" width="64" height="64" loading="lazy" alt="">
+            <img class="agralon__word" src="assets/img/agralon-wordmark.png" width="400" height="92" loading="lazy" alt="Agralon">
+          </span>
+          <span class="link-arrow link-arrow--light">Conocer Agralon <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="preguntas">
+      <div class="wrap faq__grid">
+        <div class="reveal">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2>Lo que suelen preguntarnos.</h2>
+          <p class="muted">¿Tiene otra duda? Escríbanos por <a href="https://wa.me/59892800358?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20agr%C3%ADcola%20con%20dron." target="_blank" rel="noopener">WhatsApp</a> y le respondemos directamente.</p>
+        </div>
+        <div class="faq__list reveal">
+          <details>
+            <summary>¿En qué zonas trabajan?</summary>
+            <p>Nuestra base está en el departamento de San José. Evaluamos trabajos en otros departamentos según la superficie, la ubicación y el tipo de servicio.</p>
+          </details>
+          <details>
+            <summary>¿Qué información necesitan para cotizar?</summary>
+            <p>Ubicación del campo, superficie aproximada, cultivo y tipo de aplicación. Con esos datos podemos darle una primera respuesta.</p>
+          </details>
+          <details>
+            <summary>¿Trabajan únicamente con pulverización?</summary>
+            <p>No. Kunz Agrotech también ofrece otros servicios compatibles con la plataforma agrícola, incluyendo siembra al voleo y determinadas aplicaciones de fertilizantes.</p>
+          </details>
+          <details>
+            <summary>¿Pueden trabajar cuando no entra un tractor?</summary>
+            <p>La aplicación aérea puede ser una alternativa en muchas situaciones con problemas de acceso o condiciones de suelo complicadas. La viabilidad se evalúa para cada trabajo.</p>
+          </details>
+          <details>
+            <summary>¿Cómo solicito un presupuesto?</summary>
+            <p>Directamente por WhatsApp al 092 800 358 o mediante el formulario de contacto, un poco más abajo.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO / CIERRE -->
+    <section class="section contact" id="contacto">
+      <svg class="contact__furrows" aria-hidden="true"><use href="#furrows"/></svg>
+      <div class="wrap contact__grid">
+        <div class="contact__intro reveal">
+          <p class="eyebrow eyebrow--light">Contacto</p>
+          <h2>¿Tiene un trabajo para realizar?</h2>
+          <p class="lead lead--light">Cuéntenos qué necesita y evaluamos la mejor forma de realizarlo.</p>
+          <a class="btn btn--primary btn--lg" href="https://wa.me/59892800358?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20agr%C3%ADcola%20con%20dron." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Solicitar presupuesto por WhatsApp</a>
+          <ul class="channels">
+            <li><svg aria-hidden="true"><use href="#i-wa"/></svg><div><span>WhatsApp · Teléfono</span><a href="https://wa.me/59892800358" target="_blank" rel="noopener">092 800 358</a></div></li>
+            <li><svg aria-hidden="true"><use href="#i-mail"/></svg><div><span>E-mail</span><a href="mailto:stanley@kunzagrotech.com">stanley@kunzagrotech.com</a></div></li>
+            <li><svg aria-hidden="true"><use href="#i-ig"/></svg><div><span>Instagram</span><a href="https://instagram.com/kunzagrotech" target="_blank" rel="noopener">@kunzagrotech</a></div></li>
+          </ul>
+        </div>
+
+        <div class="form-card reveal">
+          <!-- Sin servidor propio: el formulario arma la consulta y la abre en WhatsApp (o e-mail).
+               Si más adelante hay un endpoint real, indicarlo en data-endpoint y site.js lo usa automáticamente. -->
+          <form id="consulta" data-endpoint="" novalidate>
+            <h3>Enviar consulta</h3>
+            <p class="form-hint">Complete los datos y su consulta se abre lista para enviar por WhatsApp.</p>
+            <div class="field">
+              <label for="f-nombre">Nombre</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-tel">Teléfono / WhatsApp</label>
+              <input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-zona">Departamento / localidad</label>
+                <input id="f-zona" name="zona" type="text" autocomplete="address-level1">
+              </div>
+              <div class="field">
+                <label for="f-sup">Superficie aproximada</label>
+                <input id="f-sup" name="superficie" type="text" placeholder="ej. 80 ha">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-tipo">Tipo de trabajo</label>
+              <select id="f-tipo" name="tipo">
+                <option value="">Seleccionar…</option>
+                <option>Pulverización</option>
+                <option>Siembra al voleo</option>
+                <option>Fertilización</option>
+                <option>Zona de difícil acceso</option>
+                <option>Otro / no estoy seguro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg">Mensaje</label>
+              <textarea id="f-msg" name="mensaje" rows="3" placeholder="Cultivo, fecha estimada u otros detalles"></textarea>
+            </div>
+            <p class="form-error" role="alert" hidden>Por favor, indique su nombre y un teléfono de contacto.</p>
+            <div class="form-actions">
+              <button class="btn btn--dark" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar consulta</button>
+              <button class="btn-text" type="button" data-send="mail">Prefiero enviarla por e-mail</button>
+            </div>
+          </form>
+          <div class="form-done" role="status" aria-live="polite" hidden tabindex="-1">
+            <span class="form-done__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3>Su consulta está lista.</h3>
+            <p data-done="wa">Abrimos WhatsApp con el mensaje preparado. Solo falta tocar <strong>Enviar</strong> en la conversación. Le respondemos a la brevedad.</p>
+            <p data-done="mail" hidden>Abrimos su programa de correo con el mensaje preparado. Solo falta enviarlo. Le respondemos a la brevedad.</p>
+            <p data-done="sent" hidden>Recibimos sus datos. Le respondemos a la brevedad.</p>
+            <div class="form-actions">
+              <a class="btn btn--dark" data-retry href="#" target="_blank" rel="noopener">¿No se abrió? Abrir de nuevo</a>
+              <button class="btn-text" type="button" data-edit>Editar la consulta</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-192.png" width="72" height="72" loading="lazy" alt="Logo de Kunz Agrotech">
+        <div>
+          <p class="footer__name">Kunz Agrotech</p>
+          <p>Servicios agrícolas con drones</p>
+          <p>San José · Uruguay</p>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Pie de página">
+        <a href="#servicios">Servicios</a>
+        <a href="#tecnologia">Tecnología</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#cobertura">Cobertura</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <ul class="footer__contact">
+        <li><a href="https://wa.me/59892800358" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>092 800 358</a></li>
+        <li><a href="https://instagram.com/kunzagrotech" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@kunzagrotech</a></li>
+        <li><a href="mailto:stanley@kunzagrotech.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>stanley@kunzagrotech.com</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer__base">
+      <p>© 2026 Kunz Agrotech.</p>
+      <a class="footer__parent" href="https://kunzglobal.com/" target="_blank" rel="noopener" aria-label="Kunz Global (se abre en una pestaña nueva)">
+        <span>Una marca de</span>
+        <img src="assets/img/kunz-global.png" width="560" height="169" loading="lazy" alt="Kunz Global">
+      </a>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/59892800358?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20agr%C3%ADcola%20con%20dron." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+  <script src="assets/js/site.js" defer></script>
 </body>
-
 </html>
-

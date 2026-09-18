@@ -1,0 +1,1 @@
+Generado por scripts/build-images.mjs a partir de source/. No editar a mano.
