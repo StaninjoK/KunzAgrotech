@@ -26,7 +26,7 @@ const HERO_TUNE = { contrast: 1.03, saturation: 1.02, clarity: { sigma: 2, m1: 0
 // Ausschnitte: foto-stanley-t100.jpg und foto-stanley-t100-vuelo.jpg (1200 × 1600), t100-drone.jpg (1600 × 747), tarjeta-hidrosensible.jpg (956 × 2048)
 const CROPS = {
   hero: { file: FLIGHT, left: 0, top: 0, width: 1200, height: 1600, widths: [1200, 900, 640], tune: HERO_TUNE, quality: 84 },
-  about: { file: PHOTO, left: 480, top: 400, width: 700, height: 875, widths: [700, 480] },
+  about: { file: PHOTO, left: 480, top: 400, width: 700, height: 875, widths: [700, 480], tune: { ...HERO_TUNE, sharpen: 0.7, m2: 1.5 }, quality: 84 },
   t100: { file: DRONE, left: 190, top: 40, width: 1200, height: 707, widths: [1200, 800] },
   // Karte liegt hochkant im Foto; für das Layout um 90° gedreht (nur Ausrichtung, Inhalt unverändert).
   card: { file: CARD, left: 150, top: 300, width: 680, height: 1500, rotate: -90, widths: [1100, 700], tune: TUNE },
