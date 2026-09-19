@@ -19,10 +19,13 @@ const CARD = src("tarjeta-hidrosensible.jpg"); // Wassersensitives Papier nach A
 
 // Sanfte Aufbereitung: etwas Kontrast und vorsichtige Schärfe nach dem Verkleinern. Keine Retusche.
 const TUNE = { contrast: 1.04, saturation: 1.02, sharpen: 0.5 };
+// Hero-Foto (Handyfoto, eher weich): erst etwas Mikrokontrast in voller Auflösung (breiter, schwacher Radius),
+// nach dem Verkleinern feine Schärfe mit Obergrenze x1 gegen helle Säume. Bewusst moderat, damit es natürlich bleibt.
+const HERO_TUNE = { contrast: 1.03, saturation: 1.02, clarity: { sigma: 2, m1: 0.22, m2: 0.22 }, sharpen: 0.75, m1: 0.8, m2: 1.6, x1: 2.5 };
 
 // Ausschnitte: foto-stanley-t100.jpg und foto-stanley-t100-vuelo.jpg (1200 × 1600), t100-drone.jpg (1600 × 747), tarjeta-hidrosensible.jpg (956 × 2048)
 const CROPS = {
-  hero: { file: FLIGHT, left: 0, top: 0, width: 1200, height: 1600, widths: [1200, 900, 640], tune: TUNE, quality: 80 },
+  hero: { file: FLIGHT, left: 0, top: 0, width: 1200, height: 1600, widths: [1200, 900, 640], tune: HERO_TUNE, quality: 84 },
   about: { file: PHOTO, left: 480, top: 400, width: 700, height: 875, widths: [700, 480] },
   t100: { file: DRONE, left: 190, top: 40, width: 1200, height: 707, widths: [1200, 800] },
   // Karte liegt hochkant im Foto; für das Layout um 90° gedreht (nur Ausrichtung, Inhalt unverändert).
@@ -35,11 +38,12 @@ async function photo(name, crop) {
       .rotate()
       .extract({ left: crop.left, top: crop.top, width: crop.width, height: crop.height });
     if (crop.rotate) img = sharp(await img.rotate(crop.rotate).toBuffer());
+    const t = crop.tune;
+    if (t?.clarity) img = sharp(await img.sharpen(t.clarity).toBuffer());
     const fullWidth = crop.rotate ? crop.height : crop.width;
     img = img.resize({ width: Math.min(w, fullWidth) });
-    if (crop.tune) {
-      const c = crop.tune.contrast;
-      img = img.linear(c, -128 * (c - 1)).modulate({ saturation: crop.tune.saturation }).sharpen({ sigma: crop.tune.sharpen, m1: 0.6, m2: 1.2 });
+    if (t) {
+      img = img.linear(t.contrast, -128 * (t.contrast - 1)).modulate({ saturation: t.saturation }).sharpen({ sigma: t.sharpen, m1: t.m1 ?? 0.6, m2: t.m2 ?? 1.2, ...(t.x1 ? { x1: t.x1 } : {}) });
     }
     const q = crop.quality || 72;
     await img.clone().webp({ quality: q, effort: 6 }).toFile(out(`${name}-${w}.webp`));
@@ -116,6 +120,8 @@ async function badge() {
 
 async function brands() {
   await sharp(src("kunz-global-logo.png")).resize({ width: 560 }).png({ compressionLevel: 9 }).toFile(out("kunz-global.png"));
+  // Weißes Kunz-Global-Zeichen (von der Kunz-Global-Website) für die Markenleiste auf dunklem Grund.
+  await sharp(src("kunz-global-mark-white.png")).resize({ height: 96 }).png({ compressionLevel: 9 }).toFile(out("kunz-global-mark.png"));
   // Agralon-App-Icon: Ecken des Originals sind weichgezeichnet, daher leicht nach innen beschneiden und abrunden.
   const s = 400;
   const mask = Buffer.from(

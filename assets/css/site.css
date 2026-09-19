@@ -49,7 +49,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 [hidden] { display: none !important; }
 
 :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
-.hero :focus-visible, .tech :focus-visible, .contact__intro :focus-visible, .header :focus-visible, .agralon :focus-visible, .field :focus-visible { outline-color: var(--green-soft); }
+.hero :focus-visible, .tech :focus-visible, .contact__intro :focus-visible, .header :focus-visible, .agralon :focus-visible, section.field :focus-visible { outline-color: var(--green-soft); }
 
 .skip { position: absolute; left: 16px; top: -60px; z-index: 200; background: var(--white); color: var(--text); padding: 10px 16px; border-radius: 8px; transition: top 0.2s; }
 .skip:focus { top: 12px; }
@@ -206,7 +206,8 @@ p { text-wrap: pretty; }
 .note { margin-top: 18px; font-size: 0.84rem; line-height: 1.55; color: var(--on-dark-muted); }
 
 /* ---------- Trabajos en campo ---------- */
-.field { background: var(--ink); color: var(--on-dark); }
+/* Nur die Sektion: .field heißt auch der Feldblock im Formular. */
+section.field { background: var(--ink); color: var(--on-dark); }
 .field__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.9fr); gap: 16px; }
 .field__item, .field__video { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; background: var(--ink-2); }
 .field__item--lead { grid-column: 1 / 3; aspect-ratio: 16 / 9; }
@@ -309,7 +310,9 @@ p { text-wrap: pretty; }
 .ecosystem { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(56px, 7vw, 88px); border-top: 1px solid var(--line-light); }
 .ecosystem li { padding: 22px 24px 0 0; }
 .ecosystem li + li { padding-left: 24px; border-left: 1px solid var(--line-light); }
-.ecosystem a { display: block; text-decoration: none; }
+.ecosystem a, .ecosystem__item { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+.ecosystem img { flex: none; width: 44px; height: 44px; object-fit: contain; }
+.ecosystem__mark--agralon { border-radius: 11px; box-shadow: 0 0 0 1px var(--line-light); }
 .ecosystem strong { display: block; font-weight: 600; font-stretch: 106%; font-size: 1rem; }
 .ecosystem span { display: block; margin-top: 2px; font-size: 0.88rem; color: var(--on-dark-muted); }
 .ecosystem a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
@@ -348,15 +351,34 @@ p { text-wrap: pretty; }
 .form-steps li { display: flex; align-items: baseline; gap: 12px; }
 .form-steps span { flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--white); border: 1px solid var(--line); font-size: 0.74rem; font-weight: 700; color: var(--green); transform: translateY(-1px); }
 .form-note { margin-top: 14px; font-size: 0.82rem; color: var(--muted); }
-.field { margin-bottom: 16px; min-width: 0; }
+.form-card .field { margin-bottom: 16px; min-width: 0; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-label { display: block; font-size: 0.83rem; font-weight: 600; margin-bottom: 6px; }
-input, select, textarea { width: 100%; min-height: 50px; padding: 12px 14px; font-size: 1rem; background: var(--white); border: 1px solid rgba(21, 35, 63, 0.24); border-radius: 10px; transition: border-color 0.2s, box-shadow 0.2s; }
+label { display: block; font-size: 0.83rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+input, select, textarea { width: 100%; min-height: 50px; padding: 12px 14px; font-size: 1rem; color: var(--text); background-color: var(--white); border: 1px solid rgba(21, 35, 63, 0.2); border-radius: 10px; box-shadow: none; transition: border-color 0.2s, box-shadow 0.2s; }
 textarea { resize: vertical; min-height: 96px; }
-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%2319212b' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; padding-right: 40px; }
-input::placeholder, textarea::placeholder { color: #8a929c; }
-input:hover, select:hover, textarea:hover { border-color: rgba(21, 35, 63, 0.45); }
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(79, 122, 58, 0.2); }
+select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%2319212b' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; padding-right: 40px; }
+/* Noch nichts gewählt: Platzhalterfarbe im Feld, die Liste selbst bleibt dunkel auf hell. */
+select:has(option[value=""]:checked) { color: #6b737e; }
+select option { color: var(--text); background-color: var(--white); }
+input::placeholder, textarea::placeholder { color: #8a929c; opacity: 1; }
+input:hover, select:hover, textarea:hover { border-color: rgba(21, 35, 63, 0.4); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(79, 122, 58, 0.16); }
+/* Autofill des Browsers färbt Felder sonst hellblau. */
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, select:-webkit-autofill { -webkit-text-fill-color: var(--text); -webkit-box-shadow: 0 0 0 40px var(--white) inset; caret-color: var(--text); transition: background-color 9999s 0s; }
+input:-webkit-autofill:focus { -webkit-box-shadow: 0 0 0 40px var(--white) inset, 0 0 0 3px rgba(79, 122, 58, 0.16); }
+/* Aufgeklappte Liste: in Browsern mit gestaltbarem select (Chrome/Edge ab 135) im Design der Seite, sonst nativ mit dunkler Schrift. */
+@supports (appearance: base-select) {
+  select, ::picker(select) { appearance: base-select; }
+  select { background-image: none; align-items: center; }
+  select::picker-icon { content: ""; align-self: center; width: 12px; height: 8px; margin-right: 4px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%2319212b' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat center / 12px 8px; transition: rotate 0.2s var(--ease); }
+  select:open::picker-icon { rotate: 180deg; }
+  ::picker(select) { margin-block: 6px; padding: 6px; border: 1px solid rgba(21, 35, 63, 0.16); border-radius: 12px; background: var(--white); box-shadow: 0 18px 40px rgba(12, 19, 29, 0.18); }
+  select option { min-height: 44px; padding: 10px 12px; border-radius: 8px; font-size: 0.98rem; color: var(--text); background-color: transparent; cursor: pointer; }
+  select option:hover, select option:focus-visible { background-color: var(--paper-2); outline: none; }
+  select option:checked { background-color: rgba(79, 122, 58, 0.12); color: var(--green-deep); font-weight: 600; }
+  select option::checkmark { color: var(--green); }
+  select option[value=""] { color: #6b737e; }
+}
 .is-invalid { border-color: #b3261e !important; }
 .form-error { margin: 4px 0 12px; font-size: 0.9rem; color: #a3221b; }
 .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 22px; }
@@ -370,7 +392,8 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 .footer { background: var(--paper); padding: clamp(48px, 6vw, 76px) 0 28px; font-size: 0.95rem; }
 .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 36px; padding-bottom: 40px; align-items: start; }
 .footer__brand { display: flex; gap: 18px; align-items: center; color: var(--muted); }
-.footer__brand img { width: 72px; height: 72px; flex: none; }
+.footer__brand { gap: 22px; }
+.footer__brand img { width: 104px; height: 104px; flex: none; }
 .footer__name { font-weight: 700; font-stretch: 116%; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); font-size: 0.95rem; margin-bottom: 4px; }
 .footer__nav { display: grid; gap: 2px; align-content: start; }
 .footer__nav a, .footer__contact a { display: inline-flex; align-items: center; gap: 10px; min-height: 36px; text-decoration: none; color: #3d4652; }
@@ -497,6 +520,9 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
   .form-actions { justify-content: center; }
   .faq__list summary { font-size: 1.05rem; padding-block: 20px; }
   .footer__grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer__brand { gap: 18px; }
+  .footer__brand img { width: 88px; height: 88px; }
+  .ecosystem img { width: 40px; height: 40px; }
   .footer__base { flex-direction: column-reverse; align-items: flex-start; }
 }
 
