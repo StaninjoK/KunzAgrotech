@@ -277,25 +277,3 @@
     form.elements.nombre.focus();
   });
 })();
-
-/* Paco (personaje del grupo Kunz): el visor 3D se descarga solo cuando el bloque se acerca a la pantalla;
-   con movimiento reducido o en el movil queda la imagen fija (assets/paco, fuente: KunzGlobal/Brand/Paco/web-kit). */
-(function () {
-  var el = document.querySelector("paco-3d");
-  if (!el || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  if (el.getAttribute("mobile") === "poster" && window.matchMedia("(max-width: 700px)").matches) return;
-  var lang = (document.documentElement.lang || "es").slice(0, 2).toLowerCase();
-  var base = lang === "es" ? "" : "../";
-  var io = new IntersectionObserver(function (entries) {
-    if (!entries.some(function (e) { return e.isIntersecting; })) return;
-    io.disconnect();
-    if (document.querySelector("script[data-paco]")) return;
-    var s = document.createElement("script");
-    s.src = base + "assets/paco/paco-viewer.js";
-    s.defer = true;
-    s.setAttribute("data-paco", "");
-    document.head.appendChild(s);
-  }, { rootMargin: "600px 0px" });
-  io.observe(el);
-})();
